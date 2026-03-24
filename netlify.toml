@@ -1,0 +1,56 @@
+# ═══════════════════════════════════════════════════════════════
+# netlify.toml — jackstallings.com
+# Static site. No build step required; publish root directly.
+# ═══════════════════════════════════════════════════════════════
+
+[build]
+  publish = "."
+
+# ─── Security headers (all routes) ──────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options            = "DENY"
+    X-Content-Type-Options     = "nosniff"
+    X-XSS-Protection           = "1; mode=block"
+    Referrer-Policy            = "strict-origin-when-cross-origin"
+    Permissions-Policy         = "camera=(), microphone=(), geolocation=()"
+    # Allow: self, Google Fonts, rss2json API, Substack images
+    Content-Security-Policy    = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://api.rss2json.com; img-src * data:; frame-ancestors 'none'"
+
+# ─── Cache static assets ─────────────────────────────────────────
+[[headers]]
+  for = "/style.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=3600"
+
+[[headers]]
+  for = "/main.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=3600"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# ─── SPA fallback (serves index.html for any unmatched path) ─────
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
