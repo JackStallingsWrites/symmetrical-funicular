@@ -407,6 +407,63 @@ body {
   font-style: italic;
 }
 
+/* Featured / pinned piece */
+.works-featured {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.375rem 1.25rem;
+  margin-bottom: 0.25rem;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  background: rgba(201, 149, 42, 0.04);
+  text-decoration: none;
+  transition: background 0.22s var(--ease), border-color 0.22s var(--ease);
+}
+.works-featured:hover {
+  background: rgba(201, 149, 42, 0.09);
+}
+
+.works-featured-meta {
+  font-size: 0.6375rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+.works-featured-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--bone);
+  line-height: 1.25;
+}
+
+.works-featured-desc {
+  font-size: 0.875rem;
+  color: var(--bone-dim);
+  line-height: 1.7;
+}
+
+.works-featured-cta {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-top: 0.25rem;
+}
+
+/* Door status line */
+.door-status {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--bone-dim);
+  opacity: 0.45;
+  margin-top: 0.25rem;
+}
+
 /* Recent works list */
 .works-list {
   list-style: none;
