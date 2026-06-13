@@ -1,11 +1,34 @@
 /* ═══════════════════════════════════════════════════════════════
    main.js — Taste & See Jack (jackstallings.com)
-   1. Sticky nav on scroll
-   2. Fade-in observer for all .fade-in elements
-   3. Live RSS feed via rss2json.com, cached in localStorage 1hr
+   1. Path-based scroll routing  (/read → #about, etc.)
+   2. Sticky nav on scroll
+   3. Fade-in observer for all .fade-in elements
+   4. Live RSS feed via rss2json.com, cached in localStorage 1hr
    ═══════════════════════════════════════════════════════════════ */
 
 'use strict';
+
+/* ─── 0. Path routing ───────────────────────────────────────── */
+(function initRouting() {
+  const routes = {
+    '/read':        '#about',
+    '/listen':      '#doors',
+    '/hear':        '#doors',
+    '/confess':     '#doors',
+    '/unredacted':  '#doors',
+  };
+
+  const path = window.location.pathname.replace(/\/$/, '').toLowerCase();
+  const target = routes[path];
+  if (!target) return;
+
+  // Push clean URL then scroll after fonts/layout settle
+  window.history.replaceState(null, '', '/');
+  window.addEventListener('load', () => {
+    const el = document.querySelector(target);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
 
 /* ─── 1. Sticky Nav ─────────────────────────────────────────── */
 (function initNav() {
