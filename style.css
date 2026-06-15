@@ -189,12 +189,12 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-/* Stagger children in hero */
-.hero-eyebrow.fade-in  { transition-delay: 0.05s; }
-.hero-headline.fade-in { transition-delay: 0.18s; }
-.hero-sub.fade-in      { transition-delay: 0.30s; }
-.btn-primary.fade-in   { transition-delay: 0.44s; }
-.hero-note.fade-in     { transition-delay: 0.55s; }
+/* Stagger children in hero only */
+.hero-inner .hero-eyebrow.fade-in  { transition-delay: 0.05s; }
+.hero-inner .hero-headline.fade-in { transition-delay: 0.18s; }
+.hero-inner .hero-sub.fade-in      { transition-delay: 0.30s; }
+.hero-inner .btn-primary.fade-in   { transition-delay: 0.44s; }
+.hero-inner .hero-note.fade-in     { transition-delay: 0.55s; }
 
 /* ═══════════════════════════════════════════════════════════════
    NAV
