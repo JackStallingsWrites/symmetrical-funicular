@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="For Earshel Miller. Startown · Starmount Village · the long ride home. An elegy by Jack Stallings.">
+  <meta property="og:title" content="Where Have All the Old Men Gone? — Jack Stallings">
+  <meta property="og:description" content="For Earshel Miller. An elegy on grief, old men, and the long ride home.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jackstallings.com/read/where-have-all-the-old-men-gone/">
+  <meta property="og:image" content="https://jackstallings.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Where Have All the Old Men Gone? — Jack Stallings">
+  <meta name="twitter:image" content="https://jackstallings.com/og-image.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Where Have All the Old Men Gone? — Jack Stallings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <noscript><style>.fade-in{opacity:1;transform:none;}</style></noscript>
+  <style>
+    /* ── Reset ────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Brand tokens ──────────────────────────────────────── */
+    :root {
+      --ink:        #1C1C1C;
+      --bone:       #F5F0E8;
+      --bone-dim:   rgba(245, 240, 232, 0.62);
+      --bone-faint: rgba(245, 240, 232, 0.10);
+      --oxblood:    #7A1E1E;
+      --gold:       #C9952A;
+      --rule:       rgba(245, 240, 232, 0.12);
+      --serif:      'EB Garamond', 'Georgia', serif;
+      --sans:       'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--bone);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--oxblood); color: var(--bone); }
+
+    /* ── Site nav ──────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem clamp(1.25rem, 5vw, 3rem);
+      background: rgba(28, 28, 28, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bone-faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .nav-back {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--bone-dim);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--bone); }
+
+    /* ── Audio player ──────────────────────────────────────── */
+    .audio-bar {
+      background: rgba(122, 30, 30, 0.12);
+      border: 1px solid rgba(122, 30, 30, 0.35);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+    .audio-bar-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--oxblood);
+      opacity: 0.85;
+    }
+    .audio-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .audio-play {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--oxblood);
+      background: transparent;
+      color: var(--bone);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .audio-play:hover { background: rgba(122,30,30,0.25); }
+    .audio-play svg { width: 14px; height: 14px; fill: var(--bone); }
+
+    .audio-progress-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+    .audio-track {
+      width: 100%;
+      height: 2px;
+      background: var(--bone-faint);
+      border-radius: 1px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .audio-track::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--oxblood);
+      cursor: pointer;
+      margin-top: -5px;
+    }
+    .audio-track::-webkit-slider-runnable-track {
+      height: 2px;
+      background: var(--bone-faint);
+    }
+
+    .audio-time {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      color: var(--bone-dim);
+      opacity: 0.6;
+      letter-spacing: 0.05em;
+    }
+
+    /* Hidden audio element */
+    #audio-el { display: none; }
+
+    /* ── Page wrapper ──────────────────────────────────────── */
+    .page {
+      max-width: 34rem;
+      margin: 0 auto;
+      padding: 7rem clamp(1.25rem, 6vw, 2rem) 5rem;
+    }
+
+    /* ── Piece header ──────────────────────────────────────── */
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.64rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 1.4rem;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: clamp(2rem, 7vw, 2.9rem);
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.1rem;
+    }
+
+    .dedication {
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--bone-dim);
+      margin-bottom: 0.3rem;
+    }
+    .dedication .sub {
+      font-style: normal;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      color: var(--bone-faint);
+    }
+
+    .masthead-rule {
+      border: 0;
+      height: 1px;
+      background: var(--rule);
+      margin: 2.6rem 0 2.8rem;
+    }
+
+    /* ── Poem body ─────────────────────────────────────────── */
+    .stanza {
+      margin-bottom: 1.85rem;
+      font-size: 1.18rem;
+      line-height: 1.62;
+    }
+    .stanza p { margin: 0; }
+    .stanza em { font-style: italic; color: var(--bone-dim); }
+
+    .bell { font-weight: 600; letter-spacing: 0.04em; color: var(--bone); }
+
+    .refrain {
+      font-style: italic;
+      font-size: 1.22rem;
+      line-height: 1.5;
+      margin: 2.4rem 0;
+      padding-left: 1.1rem;
+      border-left: 2px solid var(--oxblood);
+      color: var(--bone);
+    }
+
+    .held { font-size: 1.18rem; margin-bottom: 1.85rem; }
+    .held.plain { color: var(--bone); }
+
+    /* ── Colophon ──────────────────────────────────────────── */
+    .colophon {
+      margin-top: 3.4rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.13em;
+      line-height: 1.9;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+    }
+    .colophon .name { color: var(--bone-dim); }
+
+    /* ── Subscribe nudge ───────────────────────────────────── */
+    .subscribe-nudge {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      border: 1px solid var(--bone-faint);
+      border-radius: 2px;
+      text-align: center;
+    }
+    .subscribe-nudge p {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--bone-dim);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 0.75rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #E0AF4A; }
+  </style>
+</head>
+<body>
+
+  <!-- Site nav -->
+  <nav class="nav">
+    <a href="/" class="nav-logo">TSJ</a>
+    <a href="/#about" class="nav-back">← All Writing</a>
+  </nav>
+
+  <div class="page">
+
+    <!-- Audio player -->
+    <!-- OPERATOR: set src below to the hosted .mp3 URL when recording is ready -->
+    <audio id="audio-el" src="" preload="metadata"></audio>
+
+    <div class="audio-bar" id="audio-bar">
+      <span class="audio-bar-label">Listen — Read by Jack Stallings</span>
+      <div class="audio-controls">
+        <button class="audio-play" id="play-btn" aria-label="Play">
+          <svg id="play-icon" viewBox="0 0 16 16"><polygon points="3,1 15,8 3,15"/></svg>
+        </button>
+        <div class="audio-progress-wrap">
+          <input class="audio-track" id="audio-track" type="range" min="0" max="100" value="0" aria-label="Seek">
+          <span class="audio-time" id="audio-time">0:00 / 0:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Piece -->
+    <p class="eyebrow">Taste &amp; See Jack &middot; An Elegy</p>
+    <h1>Where Have All the Old Men Gone?</h1>
+    <p class="dedication">for Earshel Miller</p>
+    <p class="dedication"><span class="sub">Startown &middot; Starmount Village &middot; the long ride home</span></p>
+
+    <hr class="masthead-rule">
+
+    <p class="refrain">Where have all the old men gone?</p>
+
+    <div class="stanza"><p>The men who knew<br>
+    a boy was trouble<br>
+    before the boy knew<br>
+    the shape of his own hunger&mdash;<br>
+    prophets<br>
+    with ash on their tongues<br>
+    and one good curse<br>
+    left warm in the mouth.</p></div>
+
+    <div class="stanza"><p>Earshel died this morning.<br>
+    June heat on the hospice glass.<br>
+    Ninety fuckin four years,<br>
+    one short sleep&mdash;<br>
+    sleep took him<br>
+    without siren,<br>
+    without argument,<br>
+    without jerking up<br>
+    out of the dark<br>
+    with one more<br>
+    startled, wheezing<br>
+    <span class="bell">What&mdash;</span></p></div>
+
+    <div class="stanza"><p>The men who could say,<br>
+    <em>Boys, if you're gonna pull your pecker out,<br>
+    you better cover it up,</em><br>
+    and somehow make it<br>
+    scripture and county law<br>
+    in the same breath.</p></div>
+
+    <div class="stanza"><p>Ninth grade.<br>
+    Gurley Stadium under Friday night lights.<br>
+    Red devils against blue.</p></div>
+
+    <div class="stanza"><p>Jinnings and I,<br>
+    hybrid devils of sorts&mdash;<br>
+    brotherhood built<br>
+    at the edge of the Village,<br>
+    Starmount, out in Startown,<br>
+    where the first dip<br>
+    onto Shady Lane<br>
+    lets you know<br>
+    you made it.</p></div>
+
+    <div class="stanza"><p>Jinnings&mdash;<br>
+    four months older,<br>
+    one inch taller&mdash;<br>
+    Earshel's boy by blood,<br>
+    mine because of the long ride home.</p></div>
+
+    <div class="stanza"><p>We squeezed in the second row<br>
+    like contraband,<br>
+    still young enough<br>
+    to think trouble<br>
+    was somewhere you drove to&mdash;<br>
+    not the thing<br>
+    riding shotgun<br>
+    the whole way there.</p></div>
+
+    <div class="stanza"><p>Earshel drove us home<br>
+    through the dark,<br>
+    Mavisdale blood&mdash;<br>
+    Buchanan County coal country,<br>
+    half a people<br>
+    he never had to name,<br>
+    bolo tie at his throat<br>
+    like a man<br>
+    who knew exactly who he was<br>
+    and owed you no proof&mdash;<br>
+    the AM dial cranked,<br>
+    Friday scores crackling in<br>
+    from every field in the region,<br>
+    cranked,<br>
+    because Earshel couldn't hear,<br>
+    even with an <em>ear</em><br>
+    buried in his name.</p></div>
+
+    <div class="stanza"><p>One glass eye, too.<br>
+    But that's another story.</p></div>
+
+    <div class="stanza"><p>He taught by respecting<br>
+    oncoming traffic&mdash;<br>
+    clicking the pedal on the floor<br>
+    to drop the brights,<br>
+    giving the other man<br>
+    his share of the dark.</p></div>
+
+    <div class="stanza"><p>Red Devil sex ed<br>
+    was a carousel slide&mdash;<br>
+    gonorrhea,<br>
+    engorged nutsacks,<br>
+    the bill the body runs<br>
+    and always pays.</p></div>
+
+    <div class="stanza"><p>The body was a matchbook,<br>
+    and boys were born<br>
+    dragging it<br>
+    across brick<br>
+    until something caught fire&mdash;<br>
+    and the catch<br>
+    always has a catch,<br>
+    and the catch<br>
+    has bars.</p></div>
+
+    <p class="refrain">Where have all the old men gone?</p>
+
+    <div class="stanza"><p>Grandpa Dick went first&mdash;<br>
+    June twenty-two, nineteen ninety-three&mdash;<br>
+    months before that fall's game,<br>
+    and left a chair<br>
+    we learned to step around<br>
+    without admitting it was there.</p></div>
+
+    <div class="stanza"><p>Then Earshel stood near it,<br>
+    not in it,<br>
+    never trying to be blood,<br>
+    just close enough<br>
+    to keep the rain<br>
+    off a boy's neck.</p></div>
+
+    <div class="stanza"><p>Maybe the old men<br>
+    didn't always have it&mdash;<br>
+    the time,<br>
+    the faculty,<br>
+    the patience<br>
+    <em>(selah)</em><br>
+    a boy needs<br>
+    to grow the way<br>
+    only safe things grow:<br>
+    slow.</p></div>
+
+    <div class="stanza"><p>Maybe Jinnings<br>
+    never felt safe<br>
+    because his father<br>
+    never got to,<br>
+    born where he was born,<br>
+    raised by men<br>
+    the mountains had already<br>
+    worn down to flint.</p></div>
+
+    <div class="stanza"><p>We stepped there anyway.<br>
+    We stepped there singing.<br>
+    Set farts on fire.<br>
+    Drove the mower<br>
+    like a monster truck<br>
+    around the Village.</p></div>
+
+    <p class="refrain">Where have all the old men gone?</p>
+
+    <div class="stanza"><p>Addiction eats the table legs.<br>
+    Don't dress it up<br>
+    in choir robes.</p></div>
+
+    <div class="stanza"><p>It pawns the wedding ring,<br>
+    misses the birthday,<br>
+    sells the socket set,<br>
+    lies to the mother,<br>
+    bleeds the sister dry,<br>
+    teaches the children<br>
+    to flinch<br>
+    at keys in the door.</p></div>
+
+    <div class="stanza"><p>It thins the town.<br>
+    It leaves the county jail<br>
+    lit all night<br>
+    like a Waffle House<br>
+    for grief.</p></div>
+
+    <div class="held plain">And still&mdash;</div>
+
+    <div class="stanza"><p>beneath the foil,<br>
+    beneath the orange bottle,<br>
+    beneath the court date<br>
+    and the tired judge<br>
+    reading names<br>
+    like headstones&mdash;</p></div>
+
+    <div class="stanza"><p>there is a boy<br>
+    who never found safety,<br>
+    so he chased anything<br>
+    that felt like a locked door<br>
+    from the inside.</p></div>
+
+    <div class="stanza"><p>A vein.<br>
+    A pipe.<br>
+    A pill.<br>
+    A woman's soul.<br>
+    Fool's gold.<br>
+    A false god.<br>
+    A crawlspace<br>
+    where morning, for once,<br>
+    does not come swinging.</p></div>
+
+    <p class="refrain">Where have all the old men gone?</p>
+
+    <div class="stanza"><p>Before the cuffs.<br>
+    Before the charge.<br>
+    Before the county<br>
+    opened its iron mouth&mdash;</p></div>
+
+    <div class="stanza"><p>Jinnings sat with his daddy.</p></div>
+
+    <div class="held plain">I'm glad Jinnings got to see his dad.</div>
+
+    <div class="stanza"><p>And I imagine Earshel saw it&mdash;<br>
+    six months of breath<br>
+    coming back into the man<br>
+    his boy had become,<br>
+    six months of a voice<br>
+    not scraped down<br>
+    to gravel.</p></div>
+
+    <div class="stanza"><p>A father knows.<br>
+    Even under morphine light.<br>
+    Even with death<br>
+    folding towels<br>
+    at the foot of the bed.</p></div>
+
+    <div class="stanza"><p>He knew his son<br>
+    had been held<br>
+    without being handled.</p></div>
+
+    <div class="stanza"><p>Then the old man<br>
+    took the phone.</p></div>
+
+    <div class="stanza"><p>And there I was&mdash;<br>
+    a little runt,<br>
+    his son's accomplice,<br>
+    a pastor,<br>
+    a heathen,<br>
+    a Startown boy<br>
+    with ash in my doctrine&mdash;</p></div>
+
+    <div class="stanza"><p>and I heard<br>
+    the old seer say&mdash;<br>
+    a man who read country<br>
+    the way his people read it,<br>
+    who knew that ground<br>
+    by more than its road names&mdash;<br>
+    <em>Take care of my son.</em></p></div>
+
+    <div class="stanza"><p>Not preach to him.<br>
+    Not save him.<br>
+    Not fix him.<br>
+    Not drag him clean<br>
+    by the hair.</p></div>
+
+    <div class="stanza"><p><em>Take care.</em><br>
+    As if care<br>
+    were a machete<br>
+    you keep sharp<br>
+    for the dark.</p></div>
+
+    <div class="stanza"><p>And my last words to him<br>
+    were these:<br>
+    <em>You know we're Startown boys, Earshel.</em></p></div>
+
+    <div class="stanza"><p>He grinned through the phone.<br>
+    You could hear it.<br>
+    Old men can grin<br>
+    without teeth,<br>
+    without lungs,<br>
+    without leaving the room.</p></div>
+
+    <div class="stanza"><p>And I said,<br>
+    <em>You know what that means, don't you?</em></p></div>
+
+    <div class="held"><span class="bell">WHATTT?</span></div>
+
+    <div class="stanza"><p>That long Southern draw,<br>
+    stretched out slow&mdash;<br>
+    because trouble deserved<br>
+    the time it gave us<br>
+    to look at what we'd done.</p></div>
+
+    <div class="stanza"><p>And I told him,<br>
+    <em>Startown boys won't start a fight,<br>
+    but we'll sure as fuck finish one.</em></p></div>
+
+    <div class="stanza"><p>He laughed.<br>
+    And I became convinced&mdash;<br>
+    there are sacraments<br>
+    the church never named.<br>
+    A hospice laugh<br>
+    is one of them.</p></div>
+
+    <p class="refrain">Where have all the old men gone?</p>
+
+    <div class="stanza"><p>Maybe nowhere.<br>
+    Maybe it just hangs there<br>
+    over Startown&mdash;<br>
+    not a halo,<br>
+    not a cure,<br>
+    just smoke<br>
+    above a struck match,</p></div>
+
+    <div class="stanza"><p>just the truck<br>
+    idling in the dark,<br>
+    just enough room<br>
+    for two boys<br>
+    to squeeze in<br>
+    and ride home.</p></div>
+
+    <div class="colophon">
+      <div class="name">Jack Stallings</div>
+      <div>Taste &amp; See Jack · June 2026</div>
+      <div>jackstallings.com/read</div>
+    </div>
+
+    <!-- Subscribe nudge -->
+    <div class="subscribe-nudge">
+      <p>More dispatches from the concrete hearth.<br>Free. No algorithms. No noise.</p>
+      <a href="https://knowjack.substack.com/subscribe"
+         class="btn"
+         target="_blank" rel="noopener noreferrer">Pull Up a Chair →</a>
+    </div>
+
+  </div><!-- /page -->
+
+  <script>
+    // Audio player
+    (function () {
+      const audio   = document.getElementById('audio-el');
+      const playBtn = document.getElementById('play-btn');
+      const icon    = document.getElementById('play-icon');
+      const track   = document.getElementById('audio-track');
+      const timeEl  = document.getElementById('audio-time');
+
+      const PLAY_SVG  = '<polygon points="3,1 15,8 3,15"/>';
+      const PAUSE_SVG = '<rect x="2" y="1" width="4" height="14"/><rect x="10" y="1" width="4" height="14"/>';
+
+      function fmt(s) {
+        if (!s || isNaN(s)) return '0:00';
+        const m = Math.floor(s / 60);
+        const sec = String(Math.floor(s % 60)).padStart(2, '0');
+        return m + ':' + sec;
+      }
+
+      playBtn.addEventListener('click', () => {
+        if (audio.paused) { audio.play(); icon.innerHTML = PAUSE_SVG; }
+        else              { audio.pause(); icon.innerHTML = PLAY_SVG; }
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        if (!audio.duration) return;
+        track.value = (audio.currentTime / audio.duration) * 100;
+        timeEl.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+      });
+
+      track.addEventListener('input', () => {
+        if (!audio.duration) return;
+        audio.currentTime = (track.value / 100) * audio.duration;
+      });
+
+      audio.addEventListener('ended', () => {
+        icon.innerHTML = PLAY_SVG;
+        track.value = 0;
+        timeEl.textContent = '0:00 / ' + fmt(audio.duration);
+      });
+    })();
+  </script>
+
+</body>
+</html>
