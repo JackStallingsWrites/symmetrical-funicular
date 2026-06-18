@@ -634,13 +634,26 @@
   </div><!-- /page -->
 
   <script>
-    // Audio player
     (function () {
       const audio   = document.getElementById('audio-el');
+      const bar     = document.getElementById('audio-bar');
       const playBtn = document.getElementById('play-btn');
       const icon    = document.getElementById('play-icon');
       const track   = document.getElementById('audio-track');
       const timeEl  = document.getElementById('audio-time');
+
+      // If no audio src is wired in yet, show a link to the Substack post instead
+      if (!audio.getAttribute('src')) {
+        bar.innerHTML =
+          '<span class="audio-bar-label">Listen — Read by Jack Stallings</span>' +
+          '<a href="https://knowjack.substack.com/p/where-have-all-the-old-men-gone" ' +
+             'target="_blank" rel="noopener noreferrer" ' +
+             'style="color:var(--oxblood);font-family:var(--sans);font-size:0.8rem;' +
+                    'letter-spacing:0.08em;text-decoration:none;">' +
+            'Listen on Substack →' +
+          '</a>';
+        return;
+      }
 
       const PLAY_SVG  = '<polygon points="3,1 15,8 3,15"/>';
       const PAUSE_SVG = '<rect x="2" y="1" width="4" height="14"/><rect x="10" y="1" width="4" height="14"/>';
