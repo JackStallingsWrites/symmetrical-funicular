@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Charlotte-rooted conversations with Jack Stallings and Mack Greene about memory, place, inheritance, and what survives the telling.">
+  <meta property="og:title" content="Muses &amp; Roots — Jack Stallings">
+  <meta property="og:description" content="Charlotte-rooted conversations with Jack Stallings and Mack Greene about memory, place, inheritance, and what survives the telling.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jackstallings.com/listen/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Muses &amp; Roots — Jack Stallings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #1C1C1C;
+      --bone:       #F5F0E8;
+      --bone-dim:   rgba(245, 240, 232, 0.62);
+      --bone-faint: rgba(245, 240, 232, 0.10);
+      --oxblood:    #7A1E1E;
+      --gold:       #C9952A;
+      --gold-light: #E0AF4A;
+      --rule:       rgba(245, 240, 232, 0.12);
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--bone);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--oxblood); color: var(--bone); }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem clamp(1.25rem, 5vw, 3rem);
+      background: rgba(28, 28, 28, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bone-faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-link {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--bone-dim);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--bone); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--gold);
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* ── Page ── */
+    .page {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 7rem clamp(1.25rem, 6vw, 2rem) 5rem;
+    }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.64rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 1.4rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(2.4rem, 7vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .sub {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--bone-dim);
+      max-width: 36rem;
+      margin-bottom: 3rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bone-faint);
+      border: 1px solid rgba(245, 240, 232, 0.18);
+      border-radius: 2px;
+      padding: 0.45rem 0.9rem;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bone-dim);
+      margin-bottom: 3rem;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    .rule {
+      border: 0;
+      height: 1px;
+      background: var(--rule);
+      margin: 3rem 0;
+    }
+
+    /* ── Show cards ── */
+    .show-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .show-card {
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 1.75rem;
+    }
+    .show-card--primary {
+      border-color: rgba(201, 149, 42, 0.35);
+      background: rgba(201, 149, 42, 0.04);
+    }
+    .show-card--secondary {
+      background: rgba(245, 240, 232, 0.02);
+    }
+
+    .show-label {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .show-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: var(--bone);
+    }
+
+    .show-desc {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--bone-dim);
+      margin-bottom: 1rem;
+    }
+
+    .show-link {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .show-link:hover { color: var(--gold-light); }
+
+    /* ── Follow block ── */
+    .follow-block {
+      border-top: 1px solid var(--rule);
+      padding-top: 2.5rem;
+    }
+
+    .follow-statement {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--bone-dim);
+      margin-bottom: 2rem;
+      max-width: 36rem;
+    }
+
+    .follow-statement strong {
+      color: var(--bone);
+      font-weight: 500;
+    }
+
+    /* ── Subscribe nudge ── */
+    .subscribe-nudge {
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 0.85rem 2.25rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--gold-light); }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--bone-faint);
+    }
+
+    @media (max-width: 600px) {
+      .show-grid { grid-template-columns: 1fr; }
+      .nav-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-logo">TSJ</a>
+    <div class="nav-links">
+      <a href="/#about" class="nav-link">Writing</a>
+      <a href="/listen/" class="nav-link">Listen</a>
+      <a href="/confess/" class="nav-link">Confess</a>
+      <a href="https://knowjack.substack.com/subscribe" class="nav-cta" target="_blank" rel="noopener noreferrer">Subscribe</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <p class="eyebrow">The Porch &middot; Hear</p>
+    <h1>Muses &amp; Roots</h1>
+    <p class="sub">Charlotte-rooted conversations with Jack Stallings and Mack Greene &mdash; excavating the soil of the Queen City.</p>
+
+    <div class="status-badge">
+      <span class="status-dot"></span>
+      First recordings underway &middot; Launching Summer 2026
+    </div>
+
+    <div class="show-grid">
+
+      <div class="show-card show-card--primary">
+        <div class="show-label">Show One</div>
+        <div class="show-title">Muses &amp; Roots</div>
+        <p class="show-desc">Charlotte-rooted conversations about memory, place, and what Charlotte keeps trying to forget. With Jack Stallings and Mack Greene.</p>
+      </div>
+
+      <div class="show-card show-card--secondary">
+        <div class="show-label">Show Two</div>
+        <div class="show-title">Velvet Kink Confessional</div>
+        <p class="show-desc">Where the private becomes the political. An adults-only room.</p>
+        <a href="/confess/" class="show-link">Enter the room &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="follow-block">
+      <p class="follow-statement">
+        <strong>Follow now for the first recordings</strong> &mdash; conversations about memory, place, and what Charlotte keeps trying to forget.
+      </p>
+
+      <div class="subscribe-nudge">
+        <a href="https://knowjack.substack.com/subscribe" class="btn" target="_blank" rel="noopener noreferrer">Follow on Substack &rarr;</a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <span>&copy; 2026 Jack Stallings. The Art of the Unfinished.</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>

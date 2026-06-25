@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A short film and poem for the women who stayed small and grew everything.">
+  <meta property="og:title" content="Maiden Mary — Jack Stallings">
+  <meta property="og:description" content="A short film and poem for the women who stayed small and grew everything.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jackstallings.com/maiden-mary/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Maiden Mary — Jack Stallings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #1C1C1C;
+      --bone:       #F5F0E8;
+      --bone-dim:   rgba(245, 240, 232, 0.62);
+      --bone-faint: rgba(245, 240, 232, 0.10);
+      --oxblood:    #7A1E1E;
+      --gold:       #C9952A;
+      --gold-light: #E0AF4A;
+      --rule:       rgba(245, 240, 232, 0.12);
+      --serif:      'EB Garamond', 'Georgia', serif;
+      --sans:       'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--bone);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--oxblood); color: var(--bone); }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem clamp(1.25rem, 5vw, 3rem);
+      background: rgba(28, 28, 28, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bone-faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-link {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--bone-dim);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--bone); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--gold);
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* ── Page ── */
+    .page {
+      max-width: 34rem;
+      margin: 0 auto;
+      padding: 7rem clamp(1.25rem, 6vw, 2rem) 5rem;
+    }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.64rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 1.4rem;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: clamp(2rem, 7vw, 2.9rem);
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .sub {
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--bone-dim);
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+
+    .masthead-rule {
+      border: 0;
+      height: 1px;
+      background: var(--rule);
+      margin: 2.5rem 0 2.8rem;
+    }
+
+    /* ── Film placeholder ── */
+    .film-placeholder {
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: rgba(245, 240, 232, 0.02);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .film-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--bone-faint);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .film-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--bone-faint);
+    }
+
+    .film-coming-soon {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+    }
+
+    .film-substack-link {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .film-substack-link:hover { color: var(--gold-light); }
+
+    /* ── Colophon ── */
+    .colophon {
+      margin-top: 3.4rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.13em;
+      line-height: 1.9;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+    }
+    .colophon .name { color: var(--bone-dim); }
+
+    /* ── Subscribe nudge ── */
+    .subscribe-nudge {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      border: 1px solid var(--bone-faint);
+      border-radius: 2px;
+      text-align: center;
+    }
+    .subscribe-nudge p {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--bone-dim);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 0.75rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--gold-light); }
+
+    @media (max-width: 600px) {
+      .nav-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-logo">TSJ</a>
+    <div class="nav-links">
+      <a href="/#about" class="nav-link">Writing</a>
+      <a href="/listen/" class="nav-link">Listen</a>
+      <a href="/confess/" class="nav-link">Confess</a>
+      <a href="https://knowjack.substack.com/subscribe" class="nav-cta" target="_blank" rel="noopener noreferrer">Subscribe</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <p class="eyebrow">Taste &amp; See Jack &middot; Film + Poem &middot; Jun 2026</p>
+    <h1>Maiden Mary</h1>
+    <p class="sub">A short film and poem for the women who stayed small and grew everything.</p>
+
+    <hr class="masthead-rule">
+
+    <div class="film-placeholder">
+      <div class="film-icon">
+        <svg viewBox="0 0 16 16"><polygon points="5,2 14,8 5,14"/></svg>
+      </div>
+      <span class="film-coming-soon">Film coming soon</span>
+      <a href="https://knowjack.substack.com/p/maiden-mary?r=3895d8" class="film-substack-link" target="_blank" rel="noopener noreferrer">Read on Substack &rarr;</a>
+    </div>
+
+    <div class="colophon">
+      <div class="name">Jack Stallings</div>
+      <div>Taste &amp; See Jack &middot; June 2026</div>
+      <div>jackstallings.com/maiden-mary</div>
+    </div>
+
+    <div class="subscribe-nudge">
+      <p>More dispatches from the concrete hearth.<br>Free. No algorithms. No noise.</p>
+      <a href="https://knowjack.substack.com/subscribe" class="btn" target="_blank" rel="noopener noreferrer">Pull Up a Chair &rarr;</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

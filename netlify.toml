@@ -49,6 +49,17 @@
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
+# ─── Named redirects ─────────────────────────────────────────────
+[[redirects]]
+  from   = "/theses"
+  to     = "https://knowjack.substack.com/p/95-theses?r=3895d8"
+  status = 301
+
+[[redirects]]
+  from   = "/95-theses"
+  to     = "https://knowjack.substack.com/p/95-theses?r=3895d8"
+  status = 301
+
 # ─── SPA fallback (serves index.html for any unmatched path) ─────
 [[redirects]]
   from   = "/*"
