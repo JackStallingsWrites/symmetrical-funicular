@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maiden Mary — Jack Stallings</title>
+  <meta name="description" content="Four-foot something in a garden at last light. A short film." />
+  <meta property="og:title" content="Maiden Mary" />
+  <meta property="og:description" content="Four-foot something in a garden at last light. A short film. — Jack Stallings" />
+  <meta property="og:type" content="video.other" />
+  <meta property="og:url" content="https://jackstallings.com/maiden-mary" />
+  <meta property="og:image" content="https://jackstallings.com/maiden-mary/maiden-mary-poster.jpg" />
+  <link rel="canonical" href="https://jackstallings.com/maiden-mary" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Mux Player (web component) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
+  <style>
+    :root{
+      --bg:#0e0d0b; --bg-mid:#141210;
+      --ink:#e8dfd0; --ink-dim:#a09080; --ink-ghost:#5a4f43;
+      --gold:#c8a96e; --gold-dim:#7a6040; --rule:#2a241c;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --body:'EB Garamond',Georgia,serif;
+      --sans:'Montserrat',Arial,sans-serif;
+      --max:880px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.18rem;line-height:1.85;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+
+    nav{padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);}
+    .wordmark{font-family:var(--sans);font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);transition:color 0.2s;}
+    .wordmark:hover{color:var(--ink);}
+    .nav-links{display:flex;gap:2.25rem;list-style:none;}
+    .nav-links a{font-family:var(--sans);font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim);transition:color 0.2s;}
+    .nav-links a:hover{color:var(--ink);}
+
+    .hero{position:relative;max-width:640px;margin:0 auto;padding:7rem 2.5rem 3rem;overflow:hidden;}
+    .ekg{position:absolute;top:50%;left:0;width:100%;height:160px;transform:translateY(-50%);opacity:0.5;pointer-events:none;z-index:0;}
+    .ekg path{stroke:var(--gold-dim);stroke-width:1.4;fill:none;opacity:0.55;}
+    .hero-eyebrow{font-family:var(--sans);font-size:0.55rem;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:2rem;position:relative;z-index:2;text-align:center;}
+    .hero-title{font-family:var(--serif);font-size:clamp(3rem,8vw,5.5rem);font-weight:400;line-height:1.02;color:var(--ink);text-align:center;position:relative;z-index:2;letter-spacing:-0.01em;}
+    .hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,3vw,1.55rem);color:var(--ink-dim);text-align:center;margin-top:1.25rem;position:relative;z-index:2;}
+
+    .film{max-width:var(--max);margin:0 auto;padding:1.5rem 2.5rem 2rem;opacity:0;transform:translateY(20px);transition:opacity 0.9s ease,transform 0.9s ease;}
+    .film.visible{opacity:1;transform:none;}
+    mux-player{
+      width:100%;
+      aspect-ratio:16/9;
+      display:block;
+      overflow:hidden;
+      border:1px solid var(--rule);
+      --media-background-color:#0E0E10;
+      --media-object-fit:cover;
+      --controls-backdrop-color:rgba(14,14,16,0.55);
+      --media-control-background:transparent;
+      --media-control-hover-background:rgba(232,223,208,0.10);
+      --media-primary-color:#e8dfd0;
+      --media-secondary-color:#e8dfd0;
+      --media-accent-color:#7a6040;
+      --title-display:none;
+      --airplay-button-display:none;
+      --cast-button-display:none;
+      --pip-button-display:none;
+      --playback-rate-button-display:none;
+    }
+    .film-caption{font-family:var(--body);font-style:italic;font-size:1rem;color:var(--ink-ghost);text-align:center;margin-top:1.75rem;line-height:1.9;}
+
+    .end{max-width:640px;margin:0 auto;padding:3.5rem 2.5rem;border-top:1px solid var(--rule);text-align:center;}
+    .end-mark{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--gold-dim);margin-bottom:2rem;}
+    .end p{font-family:var(--body);font-style:italic;font-size:1rem;color:var(--ink-dim);margin-bottom:1.75rem;}
+    .end a{font-family:var(--sans);font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--gold-dim);padding-bottom:0.18rem;transition:color 0.2s;}
+    .end a:hover{color:var(--gold);}
+
+    footer{padding:3rem 2.5rem;border-top:1px solid var(--rule);text-align:center;}
+    footer .fnav{list-style:none;display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;}
+    footer .fnav a{font-family:var(--sans);font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-ghost);transition:color 0.2s;}
+    footer .fnav a:hover{color:var(--ink-dim);}
+    footer .fcopy{font-family:var(--sans);font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost);}
+
+    @media(max-width:600px){
+      nav{padding:1.25rem 1.5rem;}.nav-links{gap:1.1rem;}
+      .hero,.film,.end{padding-left:1.5rem;padding-right:1.5rem;}
+      .hero{padding-top:5rem;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .film{opacity:1;transform:none;transition:none;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="wordmark">Jack Stallings</a>
+  <ul class="nav-links">
+    <li><a href="/#doors">the three doors</a></li>
+    <li><a href="/#about">about</a></li>
+    <li><a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">newsletter</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <svg class="ekg" viewBox="0 0 640 160" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,80 L180,80 L200,80 L210,40 L222,120 L234,80 L420,80 L440,80 L452,20 L464,140 L476,80 L640,80" />
+  </svg>
+  <p class="hero-eyebrow">Jack Stallings · Film</p>
+  <h1 class="hero-title">Maiden Mary</h1>
+  <p class="hero-sub">four-foot something</p>
+</header>
+
+<section class="film">
+  <mux-player
+    playback-id="X01DkqGRM8aF007ygHWFEju500X5kqanAXYpg6ONTowhdI"
+    poster="/maiden-mary/maiden-mary-poster.jpg"
+    placeholder="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    metadata-video-title="Maiden Mary: Four-Foot Something"
+    metadata-viewer-user-id="anonymous"
+    preload="metadata"
+    accent-color="#7a6040"
+  ></mux-player>
+  <p class="film-caption">For the women who stayed small<br>and grew everything.</p>
+</section>
+
+<section class="end">
+  <p class="end-mark">∴</p>
+  <p>The letters go out from here.</p>
+  <a href="https://knowjack.substack.com/p/maiden-mary" target="_blank" rel="noopener noreferrer">Read on Substack →</a>
+</section>
+
+<footer>
+  <ul class="fnav">
+    <li><a href="/#doors">the three doors</a></li>
+    <li><a href="/#about">about</a></li>
+    <li><a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">newsletter</a></li>
+  </ul>
+  <p class="fcopy">© 2026 Jack Stallings · The Art of the Unfinished</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target);} });
+  },{threshold:0.12});
+  document.querySelectorAll('.film').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
