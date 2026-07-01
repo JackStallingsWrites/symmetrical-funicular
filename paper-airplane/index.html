@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paper Airplane — Jack Stallings</title>
+  <meta name="description" content="A fire tower, two brothers, and the weight that settles when grief has nowhere to go. Sam Taylor's story." />
+  <meta property="og:title" content="Paper Airplane" />
+  <meta property="og:description" content="A fire tower, two brothers, and the weight that settles when grief has nowhere to go. — Jack Stallings" />
+  <meta property="og:url" content="https://jackstallings.com/paper-airplane" />
+  <meta property="og:image" content="https://jackstallings.com/paper-airplane/paper-airplane-cover.jpg" />
+  <link rel="canonical" href="https://jackstallings.com/paper-airplane" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0e0d0b; --bg-mid:#141210;
+      --ink:#e8dfd0; --ink-dim:#a09080; --ink-ghost:#5a4f43;
+      --gold:#c8a96e; --gold-dim:#7a6040; --rule:#2a241c;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --body:'EB Garamond',Georgia,serif;
+      --sans:'Montserrat',Arial,sans-serif;
+      --max:640px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.18rem;line-height:1.85;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+
+    nav{padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);}
+    .wordmark{font-family:var(--sans);font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);transition:color 0.2s;}
+    .wordmark:hover{color:var(--ink);}
+    .nav-links{display:flex;gap:2.25rem;list-style:none;}
+    .nav-links a{font-family:var(--sans);font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim);transition:color 0.2s;}
+    .nav-links a:hover{color:var(--ink);}
+
+    .hero{position:relative;max-width:var(--max);margin:0 auto;padding:5rem 2.5rem 2.5rem;overflow:hidden;}
+    .hero-eyebrow{font-family:var(--sans);font-size:0.55rem;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:2rem;text-align:center;}
+    .hero-title{font-family:var(--serif);font-size:clamp(2.6rem,7vw,4.6rem);font-weight:400;line-height:1.05;color:var(--ink);text-align:center;letter-spacing:-0.01em;}
+    .hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.6vw,1.4rem);color:var(--ink-dim);text-align:center;margin-top:1.25rem;}
+
+    .cover{max-width:340px;margin:2rem auto 0;padding:0 2.5rem;}
+    .cover img{width:100%;display:block;border:1px solid var(--rule);}
+
+    .content-warning{max-width:var(--max);margin:2.5rem auto 0;padding:1.1rem 1.5rem;border:1px solid var(--rule);background:rgba(232,221,207,0.03);text-align:center;}
+    .content-warning p{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.05em;color:var(--ink-ghost);line-height:1.7;font-style:normal;}
+
+    .piece{max-width:var(--max);margin:0 auto;padding:1rem 2.5rem 4rem;border-top:1px solid var(--rule);}
+
+    .movement{text-align:center;margin:4.5rem 0 2rem;opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .movement:first-child{margin-top:2.5rem;}
+    .movement.visible{opacity:1;transform:none;}
+    .mv-num{display:block;font-family:var(--sans);font-size:0.55rem;letter-spacing:0.3em;color:var(--gold-dim);margin-bottom:0.85rem;}
+    .mv-name{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.3rem);font-weight:500;font-style:italic;color:var(--ink);letter-spacing:0.04em;line-height:1;}
+    .mv-date{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-ghost);margin-top:0.9rem;}
+
+    .stanza{margin:0 auto 2.4rem;max-width:34rem;opacity:0;transform:translateY(16px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .stanza.visible{opacity:1;transform:none;}
+    .stanza p{font-size:1.08rem;line-height:1.75;color:var(--ink);margin-bottom:1.05rem;}
+    .stanza p:last-child{margin-bottom:0;}
+
+    .end{max-width:var(--max);margin:0 auto;padding:3.5rem 2.5rem;border-top:1px solid var(--rule);text-align:center;}
+    .end-mark{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--gold-dim);margin-bottom:2rem;}
+    .end p{font-family:var(--body);font-style:italic;font-size:1rem;color:var(--ink-dim);margin-bottom:1.75rem;}
+    .end a{font-family:var(--sans);font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--gold-dim);padding-bottom:0.18rem;transition:color 0.2s;}
+    .end a:hover{color:var(--gold);}
+
+    footer{padding:3rem 2.5rem;border-top:1px solid var(--rule);text-align:center;}
+    footer .fnav{list-style:none;display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;}
+    footer .fnav a{font-family:var(--sans);font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-ghost);transition:color 0.2s;}
+    footer .fnav a:hover{color:var(--ink-dim);}
+    footer .fcopy{font-family:var(--sans);font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost);}
+
+    @media(max-width:600px){
+      nav{padding:1.25rem 1.5rem;}.nav-links{gap:1.1rem;}
+      .hero,.piece,.end{padding-left:1.5rem;padding-right:1.5rem;}
+      .hero{padding-top:4rem;}
+      body{font-size:1.1rem;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .movement,.stanza{opacity:1;transform:none;transition:none;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="wordmark">Jack Stallings</a>
+  <ul class="nav-links">
+    <li><a href="/#doors">the three doors</a></li>
+    <li><a href="/#about">about</a></li>
+    <li><a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">newsletter</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <p class="hero-eyebrow">Jack Stallings · Fiction · #twentytwo</p>
+  <h1 class="hero-title">Paper Airplane</h1>
+  <p class="hero-sub">Sam Taylor's story</p>
+</header>
+
+<div class="cover">
+  <img src="/paper-airplane/paper-airplane-cover.jpg" alt="A man's profile blending into a fire tower, a paper airplane, and a distant skyline" loading="lazy" width="1410" height="2250" />
+</div>
+
+<div class="content-warning">
+  <p>Content note: grief, addiction, overdose death, and a scene involving a non-consensual advance that is refused. Read it when you have the room.</p>
+</div>
+
+<main class="piece">
+  <div class="movement" data-mv="1">
+    <span class="mv-num">I</span>
+    <h2 class="mv-name">Intake</h2>
+    <p class="mv-date">Monday, December 22, 2025</p>
+  </div>
+
+  <div class="stanza">
+  <p>The light didn't enter the room; it prosecuted it. Sam Taylor opened one eye. The midday sun sliced through the warped blinds of his bedroom, hitting the uncorked bourbon bottle on the nightstand before searing into his retina. It was a blaring, clinical whiteness—the kind that demands an accounting of the night before. He didn't need to look at the calendar to know the date. He could feel the tilt of the earth in the headache pulsing behind his eyes. The Winter Solstice was over, but the darkness hadn't left the room.</p>
+  <p>Knock. Knock. Knock.</p>
+  <p>The sound was sharp, confident, and rhythmic. It wasn't the hesitant scratch of his mother; it was the percussion of someone who had nothing to hide.</p>
+  <p>&quot;I know you're in there, Samuel. I can smell the regret from the hallway.&quot;</p>
+  <p>Sam groaned, swinging his legs over the edge of the mattress. The floorboards were cold. He rubbed his face, his palms scraping against twenty-four hours of stubble. He felt like a crime scene—evidence of a disaster left unsecured.</p>
+  <p>He opened the door.</p>
+  <p>Ava stood there. She looked infuriatingly healthy. It was her forty-third birthday, and she wore her three years of sobriety like a tailored suit—clean lines, clear eyes, no static. She held a travel mug of black coffee in one hand and a set of car keys in the other.</p>
+  <p>&quot;You look like shit,&quot; she said. She didn't say it with judgment; she said it with the cheeky affection of a sister who had already survived her own wreckage. She was the Porch Light—the one who kept the light on so you didn't have to knock to come home.</p>
+  <p>&quot;Happy Birthday, Ava,&quot; Sam croaked. His voice sounded like gravel and ash.</p>
+  <p>&quot;Shower,&quot; she commanded, handing him the coffee. &quot;Mom is expecting us. And I'm not driving a distillery to her house.&quot;</p>
+  <p>An hour later, the kitchen at their mother's house smelled of cinnamon, nutmeg, and the humid, heavy warmth of an oven that had been running all morning. It was a Red Clay warmth—domestic, suffocating, and old.</p>
+  <p>June Taylor sat at the head of the table, a glass of Chardonnay already poured near her hand. She looked frail, her edges softened by the same avoidance that had defined her life since 1999—the year the system finally finished chewing up the men in this house.</p>
+  <p>In the center of the table sat the pumpkin pie.</p>
+  <p>It was the Taylor family liturgy. Not cake. Pie. It was the tradition Caleb had loved most, the only thing that tasted the same in 2025 as it had in 1995.</p>
+  <p>Sam took a bite. The texture was dense, sweet, and cloying. It stuck to the roof of his mouth. He swallowed hard, trying to push down the nausea that hovered at the back of his throat—not just from the hangover, but from the physics of the room.</p>
+  <p>There were four sides to the table. Only three were occupied.</p>
+  <p>The fourth chair, to Sam's right, was empty. It had been empty for twenty-four years, but today, the space felt wider. It was the space Caleb used to fill with noise, with Whitman quotes, with the chaotic energy of a boy who refused to be heavy. Caleb was a Summer Solstice child—one of the &quot;brothers&quot; who burned too bright for a world built on &quot;blood making the green grass grow.&quot;</p>
+  <p>At the other end, the ghost of their father hovered—the man who worked until his back broke, then drank until his heart stopped. A casualty of layoffs and cheap pine, a man who loved the changing seasons but couldn't survive the winter.</p>
+  <p>&quot;It's good, Mom,&quot; Ava said, breaking the silence. She tapped her fork against the plate, a metronome of the living. &quot;Forty-three. Can you believe it? The days are supposed to be getting longer now, right?&quot;</p>
+  <p>&quot;Winter Solstice was yesterday,&quot; June murmured, staring into her wine. &quot;The darkest day is over.&quot;</p>
+  <p>Sam gripped his fork until his knuckles turned white. The darkest day wasn't over. The summer children were gone, chewed up by the machinery, and only the winter children—the ones who knew how to freeze—were left at the table.</p>
+  <p>He could still feel the phantom weight of the medical bag he didn't have. He could feel the vibration of the text message hidden in his pocket—the one he hadn't read, the one Ava already knew about.</p>
+  <p>The bag. The Quiet Room. The boy with the tattoo.</p>
+  <p>&quot;Sam?&quot; Ava's voice was softer now. She wasn't looking at him with the humor of the morning. She was looking at him with the devastatingly real gaze of a woman who knows that sobriety is just a fancy word for looking at the things that hurt. &quot;You okay?&quot;</p>
+  <p>Sam looked at the empty chair. He looked at the pie. He took a breath—an intake.</p>
+  <p>&quot;I'm fine,&quot; he lied. &quot;Just tired.&quot;</p>
+  <p>The lie hung in the air, heavy and sweet, masking the tremor that was already starting in his hands.</p>
+  </div>
+
+  <div class="movement" data-mv="2">
+    <span class="mv-num">II</span>
+    <h2 class="mv-name">Constriction</h2>
+    <p class="mv-date">Sunday, December 21, 2025</p>
+  </div>
+
+  <div class="stanza">
+  <p>The memory didn't come in a straight line. It came in flashes, strobe-lit by the red emergency lights of the rig.</p>
+  <p>Sixteen hours before the pumpkin pie, Sam was on his knees in the back of Unit 4. The world was a vibrating box of steel and diesel fumes. Maria Martinez was driving like she was running from g-d, throwing the ambulance around the curves of Old 321.</p>
+  <p>On the stretcher lay Emmett &quot;Jake&quot; Flynn. Seventeen years old. Blue lips. Pinpoint pupils. The classic, tragic architecture of an opioid overdose.</p>
+  <p>&quot;Sam! We're two minutes out!&quot; Maria yelled from the front. Her voice was tight. She couldn't see what Sam saw, but she could feel it. The air in the back was too heavy. It was pressurized.</p>
+  <p>Sam wasn't alone with the boy.</p>
+  <p>The Whisperer was there.</p>
+  <p>It wasn't a ghost in a white sheet. It was a frequency. A high-pitched, grinding static that sat at the base of Sam's skull. It was the voice of the Effective Person demanding a miracle. It was the voice of his father, sober enough to judge but too drunk to help.</p>
+  <p>Push, Sam. Be the Ghost. Fix it.</p>
+  <p>Sam locked his elbows. He threw his weight down. One. Two. Three. Four.</p>
+  <p>The boy's chest had no resistance. It was spongy, hollow. Sam was pumping oxygen into a system that had already shut down the factory.</p>
+  <p>He looks like him, the Whisperer hissed. It sounded like a truck door slamming. Look at the hair. Look at the jaw. It's Caleb. You dropped him. Pick him up.</p>
+  <p>&quot;Shut up,&quot; Sam grunted, sweat stinging his eyes.</p>
+  <p>He pressed harder. He was trying to manually force the heart to beat, trying to bully the biology into submission. This was his Ministry of Control. If he pumped hard enough, if he was competent enough, he could reverse the entropy. He could make the Winter Solstice turn into summer.</p>
+  <p>Sam reached for the boy's wrist to check for a rhythm.</p>
+  <p>He froze.</p>
+  <p>There, on the inside of the pale forearm, right over the radial artery where the life should have been fluttering, was a tattoo. It was crude, black ink. A paper airplane.</p>
+  <p>The sight of it constricted Sam's throat like a physical hand. The air left the ambulance. It was the same symbol. The symbol of the boy who fell. The symbol of the gravity Sam couldn't defeat.</p>
+  <p>Don't look at it, the Whisperer screamed. Save him! Be the hero!</p>
+  <p>Sam looked at the boy's face. He didn't see a patient. He saw a mirror. He saw the cost of twenty years of trying to be a &quot;Savior&quot; to avoid being a brother. He saw that saving Jake wouldn't save Caleb. It would just be another performance. Another magic trick to hide the rot.</p>
+  <p>Push! the Whisperer commanded. Don't you dare stop.</p>
+  <p>Sam leaned forward, driven by the compulsion, the &quot;sprint mode&quot; of trauma. He thrust his palms down with everything he had left—the desperation, the shame, the fear.</p>
+  <p>CRACK.</p>
+  <p>The sound was wet and sharp. A rib gave way under the force. It felt like wet drywall.</p>
+  <p>It wasn't the sound of life returning. It was the sound of something breaking that couldn't be fixed.</p>
+  <p>Sam stopped. His hands hovered over the boy's chest. The constriction in his own chest was absolute. His heart hammered against his ribs—an erratic, terrified bird.</p>
+  <p>&quot;Sam?&quot; Maria called out. The siren wailed, a long, dying note. &quot;Do you have a pulse?&quot;</p>
+  <p>Sam looked at the paper airplane. It wasn't flying. It was grounded. He looked at the boy. He looked at the empty space where the miracle was supposed to be.</p>
+  <p>The Whisperer screamed a final, violent obscenity, then went eerily silent.</p>
+  <p>Sam sat back on his heels. He wiped his mouth. &quot;No,&quot; Sam whispered. &quot;He's gone.&quot;</p>
+  <p>The rig hit a pothole, but Sam didn't brace himself. The Ghost had finally failed. The cracks were no longer quiet.</p>
+  </div>
+
+  <div class="movement" data-mv="3">
+    <span class="mv-num">III</span>
+    <h2 class="mv-name">Surge</h2>
+    <p class="mv-date">Sunday, December 21, 2025 (23:45)</p>
+  </div>
+
+  <div class="stanza">
+  <p>The Quiet Room was meant for families to receive bad news, not for this.</p>
+  <p>Sam didn't ask Vivienne. He didn't seduce her. He steered her by the elbow, his grip tight enough to bruise, moving her down the hallway away from the blaring lights of the trauma bay. The door had barely latched behind them before he was on her.</p>
+  <p>This wasn't intimacy. It was an extraction.</p>
+  <p>The Whisperer was a roar now, drowning out the beep of the cardiac monitors down the hall. Numb it, Sam. Burn it out. Use the friction to kill the picture of the boy.</p>
+  <p>He pressed her against the wall. His hands were frantic, trembling with a volatile energy that felt less like desire and more like a seizure. He reached for the drawstring of her scrubs. He pulled hard—too hard. The sound of the fabric snapping tight against her waist was sharp, violent.</p>
+  <p>&quot;Sam, wait—&quot; Vivienne's voice was breathless, but not in the way he wanted.</p>
+  <p>He didn't wait. He couldn't. He needed the dopamine hit. He needed to override the brakes of his grief with the gas of aggression. He needed to bury himself in her until he forgot the sound of Jake's ribs cracking. He was trying to apply the theology of friction without the sanctuary.</p>
+  <p>He yanked her scrub bottoms down, his breathing ragged, his eyes squeezed shut against the reality of the room.</p>
+  <p>&quot;Sam! Stop.&quot;</p>
+  <p>Vivienne didn't shove him. She caught his wrists. Her grip was shocking—not because it was strong, but because it was absolute.</p>
+  <p>Sam stumbled, his eyes snapping open. The room spun. &quot;What? Viv, come on, I just need—&quot;</p>
+  <p>&quot;Look at me.&quot;</p>
+  <p>She held his wrists against the wall. She wasn't trembling. She stood in the center of his chaos like a stone in a stream. Her scrubs were a deep, earthy brown—Umber—not the clinical blue of the rest of the staff. She smelled of ozone and antiseptic, the scent of a storm that had already passed.</p>
+  <p>She stared into his face, searching for the man she called The Ghost—the partner who understood the difference between friction and fire. The man who knew how to turn pain into a safe harbor.</p>
+  <p>She didn't find him.</p>
+  <p>&quot;Your eyes,&quot; she whispered. She didn't look scared; she looked disappointed. &quot;My g-d, Sam. Look at your eyes.&quot;</p>
+  <p>Sam blinked, confused, the adrenaline vibrating in his teeth. &quot;What about them?&quot;</p>
+  <p>&quot;They're hollow,&quot; she said, the judgment landing like a physical blow. &quot;Selfish. You aren't even here. You're just… feeding.&quot;</p>
+  <p>She released his wrists and stepped back, pulling her scrubs up with a dignity that made him feel small.</p>
+  <p>&quot;You aren't trying to feel me, Sam. You're trying to fuck the silence away. And I am not your drug.&quot;</p>
+  <p>She saw it. She saw the predator. She saw the Effective Person trying to use her body to fix his failure. She saw the unhinged reality of a man who had no Emotional Autonomy left.</p>
+  <p>&quot;Vivienne, please,&quot; Sam said, reaching for her. The Competent Protector collapsed instantly into the anxious child. He was terrified of the silence she was about to leave him in.</p>
+  <p>She didn't flinch. She just looked at his outstretched hand like it was a weapon he didn't know how to unload.</p>
+  <p>&quot;You're dangerous, Sam,&quot; she said. &quot;Not because you're strong. But because you're empty.&quot;</p>
+  <p>She opened the door. The hospital sounds rushed in—sterile, indifferent, loud.</p>
+  <p>She walked out.</p>
+  <p>Sam stood alone in the center of the room. The surge of adrenaline had nowhere to go. It curdled inside him, turning into a toxic, vibrating panic. He looked at the empty vinyl recliner. He looked at his hands.</p>
+  <p>The friction hadn't worked. The fire hadn't started. All that was left was the ash.</p>
+  </div>
+
+  <div class="movement" data-mv="4">
+    <span class="mv-num">IV</span>
+    <h2 class="mv-name">Break</h2>
+    <p class="mv-date">Sunday, December 21, 2025 (Midnight)</p>
+  </div>
+
+  <div class="stanza">
+  <p>The door to the Quiet Room clicked shut. The sound was small, mechanical, final.</p>
+  <p>Sam stood in the center of the room, his chest heaving, the air still thick with the violence of his own need. Vivienne was gone. She hadn't run; she had retreated, stepping back from him as if he were a contagion. Her words hung in the silence, not angry, just clinical—a diagnosis he couldn't intubate his way out of.</p>
+  <p>Hollow. Selfish.</p>
+  <p>He looked down. His hands were shaking. Not the adrenaline tremor of a code blue, but the weakness of a man whose sugar had bottomed out.</p>
+  <p>On the vinyl recliner sat his medical bag.</p>
+  <p>It was heavy cordura, bright red, packed with the tools of his priesthood: Narcan, laryngoscopes, gauze, epinephrine. For twenty years, that bag had been his vestment. When he held it, he wasn't Sam Taylor, the boy who hid under headphones while his father drank. He was The Ghost. He was the man who cheated death. He was the Competent Protector.</p>
+  <p>Now, looking at it, he saw only a prop.</p>
+  <p>The Whisperer's voice rose in his ear, no longer seductive, just tired. Pick it up, Sam. Fix it. Go find her. Explain. Don't let them see you bleed.</p>
+  <p>Sam reached for the handle. His fingers hovered inches from the nylon strap.</p>
+  <p>He couldn't touch it. If he picked up the bag, he had to be The Ghost. He had to go back out there and perform the miracle. He had to pretend that saving Jake Flynn's life would have somehow paid the debt for Caleb's death. But Jake was dead. The tattoo on the boy's wrist was zipped inside a black bag. And Vivienne had seen the monster behind the paramedic's mask.</p>
+  <p>Sam pulled his hand back.</p>
+  <p>He turned to the door. He didn't walk; he bolted.</p>
+  <p>He left the bag on the chair.</p>
+  <p>He burst through the double doors of the Emergency Room entrance, ignoring the startled look of the triage nurse. The automatic glass sliders hissed open, and the night hit him like a shovel.</p>
+  <p>It was the Winter Solstice. The longest night. The air was frigid, tasting of dry ice and diesel.</p>
+  <p>Sam ran.</p>
+  <p>He didn't head for his truck. He ran toward the perimeter of the parking lot, past the ambulance bay where his rig sat cooling, past the smoking area where families bargained with g-d. He hit the pavement of the service road and didn't stop.</p>
+  <p>This was the old reflex. The deep-seated muscle memory from 1999. When the shouting started in the kitchen, when his father's voice turned into glass breaking, Sam ran. He and Caleb used to run until their lungs burned, thinking they could outpace the genealogy of anger.</p>
+  <p>Run until you fix it. Run until you feel clean.</p>
+  <p>He sprinted into the dark, his breath tearing at his throat. He ran until the lights of the hospital were a blurred smear of red and white behind him. He ran until the &quot;lightning in his legs&quot; fired—the lactic acid building up, screaming for oxygen.</p>
+  <p>But the cold was relentless. It bit through his thin uniform shirt, finding the sweat on his back, turning it to ice.</p>
+  <p>His boot caught a patch of black ice near the edge of the access road. Sam went down hard. His knees slammed into the asphalt. The impact jarred his teeth, biting his tongue. Copper filled his mouth.</p>
+  <p>He stayed there. On his hands and knees in the dark.</p>
+  <p>He waited for the instinct to rise. The instinct to assess the injury, to stand up, to brush off the grit, to organize the chaos.</p>
+  <p>It didn't come.</p>
+  <p>He looked at his empty hands. No bag. No gloves. No brother.</p>
+  <p>For the first time in twenty-four years, the silence wasn't waiting to be filled by his competence or his failure. It stretched out in all directions, indifferent and wide. Somewhere beyond the sodium glow of the hospital, a freight train moaned low and long, the sound of leaving that never finished leaving.</p>
+  <p>Sam wiped the grit from his palms. He didn't stand up. He just bled into the snow.</p>
+  </div>
+
+  <div class="movement" data-mv="5">
+    <span class="mv-num">V</span>
+    <h2 class="mv-name">Flatline</h2>
+    <p class="mv-date">December 25, 2025 – January 5, 2026</p>
+  </div>
+
+  <div class="stanza">
+  <p>The days did not get longer.</p>
+  <p>Technically, the Winter Solstice was past, but inside the house on Keswick Avenue, the light seemed to have stalled. It was the &quot;Twelve Days of Christmas&quot;—a suspended animation between the birth of a savior and the arrival of the Epiphany.</p>
+  <p>For Sam, it was a flatline.</p>
+  <p>There were no tones dropping. No pager beeping. No red bag. The Ghost was dead, left behind on a vinyl chair in the Quiet Room. Without the adrenaline of the &quot;Sprint Mode&quot; to sustain him, Sam fell into the wilderness.</p>
+  <p>The silence of the house was absolute. It wasn't the peaceful silence of rest; it was the heavy, pressurized silence of a library or a tomb. It was the sound of a man finally sitting still enough to hear his own blood.</p>
+  <p>Sam sat at the kitchen table. Spread out before him was the artifact he had retrieved from his mother's nightstand: Caleb's Journal.</p>
+  <p>It was a composition notebook, the cardboard cover peeling, the pages yellowed by twenty-four years of grief. The texture of the paper felt brittle under Sam's fingertips, like dried leaves.</p>
+  <p>He read.</p>
+  <p>He didn't read to solve a mystery. He read to survive the silence.</p>
+  <p>Page after page, Caleb's handwriting—jagged, energetic, alive—dismantled Sam's history.</p>
+  <p>For two decades, Sam had believed The Whisperer was a superpower. He believed it was a dark gift that made him the Competent Protector. But as he read Caleb's account of August 28, 1999—the day their father died—the clarity was unwanted and devastating.</p>
+  <p>Dad came home drunk… Sam hid. He put on his headphones. I went down to fight him.</p>
+  <p>Sam stopped reading. The realization hit him in the gut. The Whisperer wasn't a ghost. It wasn't magic. It was just his father's voice. It was his mother's anxiety disguised as love. It was the small town's demand for control.</p>
+  <p>Sam hadn't been &quot;saving&quot; people for twenty years. He had been apologizing for hiding in his room while Caleb took the black eye. His entire career was a penance that no amount of CPR could pay.</p>
+  <p>He pushed the journal away. The &quot;Effective Person&quot; crumbled. He was just a forty-three-year-old man sitting in a cold kitchen, broken, busted, and dry.</p>
+  <p>A splash of color on the table caught his eye.</p>
+  <p>It was a condolence card, postmarked three days ago. The handwriting on the envelope was an elegant, looped script that hadn't changed since high school.</p>
+  <p>Ms. Eleanor Vance.</p>
+  <p>She hadn't written a sermon. She hadn't sent a Bible verse. Ms. Vance never provided answers; she only provided questions. Inside, there was a single line from Whitman, and a short personal note:</p>
+  <p>To the boy who stayed, and the boy who flew. Gravity is not the only law. – E.V.</p>
+  <p>Sam stared at the card. The boy who flew.</p>
+  <p>He pulled the journal back. He turned to the final entry. The date was June 20, 2002. The day before the fall.</p>
+  <p>The handwriting was different here—calmer, spaced out. Caleb wasn't writing about fighting their dad or the noise of the town. He was writing about the tower.</p>
+  <p>I went up there alone this morning, Caleb wrote. The sun comes up differently when you aren't afraid of the drop. I'm not going to slip, Sam. I'm going to launch. Like a paper airplane. Fathomless.</p>
+  <p>The room seemed to tilt. The &quot;void&quot; expanded.</p>
+  <p>Sam read the line again. I'm not going to slip.</p>
+  <p>All these years, Sam had carried the guilt of a tragic accident. He thought gravity had stolen his brother. But Caleb hadn't fallen. He had climbed the tower to fly.</p>
+  <p>The silence of the house was no longer empty. It was vibrating with the truth Sam had been too busy performing to hear. The Ghost was gone, but for the first time, the brother was real.</p>
+  <p>Sam closed the journal. He looked at the window. The dark was finally starting to break.</p>
+  <p>Tomorrow was Epiphany. He knew where he had to go.</p>
+  </div>
+
+  <div class="movement" data-mv="6">
+    <span class="mv-num">VI</span>
+    <h2 class="mv-name">Reverb</h2>
+    <p class="mv-date">Tuesday, January 6, 2026 (Epiphany Morning)</p>
+  </div>
+
+  <div class="stanza">
+  <p>The old fire tower did not welcome visitors. It stood ninety feet above the tree line, a skeleton of galvanized steel and rot, vibrating in the January wind.</p>
+  <p>Sam parked his 1972 Chevy at the base. The engine ticked—a cooling metal heartbeat in the silence.</p>
+  <p>He stepped out. The cold was different here. It wasn't the sterile, air-conditioned cold of the hospital morgue. It was frigid, dry cold—wild, indifferent, and biting. It tasted of iron and ozone.</p>
+  <p>Sam looked up. The tower swayed slightly against the gray dawn.</p>
+  <p>He began to climb.</p>
+  <p>Clang. Clang. Clang.</p>
+  <p>His boots on the metal stairs created a rhythm that echoed through the valley. A reverb. With every step, the sound mimicked the timeline of his fracture.</p>
+  <p>Step 10: his father's truck door slamming in 1999—the Red Devil anger of a man who worked until his back broke and drank until his heart stopped.</p>
+  <p>Step 30: the gavel-snap of his paramedic license, the day he decided competence could outrun grief.</p>
+  <p>Step 50: the wet crack of Jake Flynn's ribs beneath his hands.</p>
+  <p>The higher he climbed, the louder the memories became. Not images—commands. Cadence. The kind that could make a boy feel safe because it told him exactly what to be.</p>
+  <p>His jaw tightened. His tongue wanted to form the words before his brain could stop it.</p>
+  <p>Blood makes the green grass grow.</p>
+  <p>The Whisperer didn't need to shout. It just kept time inside his chest.</p>
+  <p>Kill the weakness, Sam. Be useful. Be hard. You're too heavy to fly.</p>
+  <p>Rust flaked off the handrails, staining Sam's palms. It was the color of dried blood—Red Clay and old iron.</p>
+  <p>He reached the platform.</p>
+  <p>The wind hit him full force, stripping away the warmth of the cab, the smell of the bourbon, the pretenses of his life. He was exposed. He walked to the eastern edge, the place where the sun would rise, the place where the drop was sheer.</p>
+  <p>He looked down at his hands. They were trembling, stained with rust. He remembered looking at Jake's wrist. The pale skin. The blue veins. The black ink.</p>
+  <p>The Paper Airplane.</p>
+  <p>Sam gripped the wooden railing to steady himself. The wood was rough, grayed by twenty-four years of winter. His thumb brushed against a groove in the timber. A texture that didn't belong to the grain.</p>
+  <p>He looked down.</p>
+  <p>There, etched into the wood with the deep, jagged pressure of a pocketknife, was the echo.</p>
+  <p>CALEB.</p>
+  <p>And beside it, the twin of the tattoo on Jake's wrist: a paper airplane.</p>
+  <p>The story snapped shut. The beginning and the end collided. Jake hadn't just been a random overdose; he was a mirror. Caleb hadn't slipped; he had stood right here.</p>
+  <p>The reverb deafened him. The symbol wasn't about death. It was about flight. It was about the terrifying, fathomless choice to launch.</p>
+  <p>Sam traced the carving. The cold wood bit into his skin. He wasn't the Ghost anymore.</p>
+  <p>He was just the brother who had taken twenty-four years to climb the stairs.</p>
+  </div>
+
+  <div class="movement" data-mv="7">
+    <span class="mv-num">VII</span>
+    <h2 class="mv-name">Flicker</h2>
+    <p class="mv-date">Tuesday, January 6, 2026 (Sunrise)</p>
+  </div>
+
+  <div class="stanza">
+  <p>The air at ninety feet was different. It didn't smell like the earth or the pine needles below. It smelled like iron and ozone.</p>
+  <p>Sam stood on the metal grating of the fire tower, his knuckles white against the railing. It was the morning of Epiphany. The sun hadn't broken the horizon yet; the world was trapped in that Velvet Dusk between the night and the day.</p>
+  <p>Below him, his Chevy pickup looked like a toy, a speck of red rust in the gray woods.</p>
+  <p>The wind kept talking.</p>
+  <p>Not in words at first. In cadence. In that old marching rhythm that lived behind his ribs—the one that made a boy feel safe because everyone else was moving the same direction.</p>
+  <p>Sam reached into his breast pocket and pulled out a torn rectangle of paper—EMS carbon copy, the corner ripped ragged where the clipboard had caught it. The kind of paper meant to live in a file drawer until somebody sued.</p>
+  <p>His fingers were numb, stupid with cold. He flattened it against the railing anyway. The metal shivered under his hands.</p>
+  <p>His jaw clenched so hard his molars hurt. He could taste copper from the Quiet Room, the cracked rib, the asphalt. He could feel his hands on a chest that wouldn't take life, as if his palms had become a kind of prayer the world no longer honored.</p>
+  <p>He wrote anyway.</p>
+  <p>Three words. Block letters. A child's handwriting trapped inside a forty-three-year-old wrist.</p>
+  <p>I AM SORRY.</p>
+  <p>The ink bled, then stiffened—the cold turning confession into a bruise.</p>
+  <p>He capped the pen. His throat tightened with the old instinct: perform, fix, outrun.</p>
+  <p>Behind him, the ladder waited—rungs slick with frost, a way down that did not require faith. In front of him, the drop opened like a mouth.</p>
+  <p>Then he saw the groove again.</p>
+  <p>Not just the name. The pressure of it. How hard the knife had been driven into wood. As if the boy carving it was trying to leave a fingerprint deep enough to outlive gravity.</p>
+  <p>CALEB.</p>
+  <p>And beside it—the plane.</p>
+  <p>Sam stared until the tower stopped being a tower and became what it had always been: a place where the world asked a boy to choose between silence and flight.</p>
+  <p>He couldn't have saved him.</p>
+  <p>Not because he failed.</p>
+  <p>Because it wasn't an accident that needed a hero.</p>
+  <p>Sam looked at the paper in his hand. Looked at the words like they were a body he'd been trying to resuscitate for twenty-four years.</p>
+  <p>Transform it, the memory of Ms. Vance whispered—not a command, a dare. Revision.</p>
+  <p>He folded the paper with the same precision he used to wrap gauze around someone else's bleeding. Center crease. Corners aligned. Wings smoothed down until the thing had a spine.</p>
+  <p>The sun broke the ridge like a match struck in a cold room. Light hit the frost and made it glitter—rust turned briefly to gold, blood pretending to be holy.</p>
+  <p>Sam stepped to the edge.</p>
+  <p>The Whisperer rose, frantic now, wanting its old story back.</p>
+  <p>Jump. Prove you loved him. Pay it with your body.</p>
+  <p>Sam exhaled. A white cloud left his mouth. The simplest proof of all.</p>
+  <p>&quot;Fly,&quot; he said—not to the plane, but to the boy who'd carved the wood and left the world holding its breath.</p>
+  <p>He released it.</p>
+  <p>For a second it dropped—heavy with everything he'd written on it.</p>
+  <p>Then the updraft caught the wings.</p>
+  <p>The plane tipped once, as if reconsidering, and lifted—white against the bruise-blue morning—spiraling out over the tree line toward the thin seam of sunrise.</p>
+  <p>Sam watched until it became a fleck. A flicker. A refusal.</p>
+  <p>His fingers hovered in the air where it had been, shaking—not from fear this time, but from the effort of not turning pain into performance.</p>
+  <p>He leaned forward until the balls of his feet kissed the edge.</p>
+  <p>Behind him: the ladder, the rungs, the life he knew how to live.</p>
+  <p>Ahead of him: the fathomless.</p>
+  <p>Sam closed his eyes.</p>
+  <p>And for one holy second, he did nothing at all—no fixing, no running—just breath in his lungs and wind on his face, learning the difference between gravity and law.</p>
+  </div>
+</main>
+
+<section class="end">
+  <p class="end-mark">∴</p>
+  <p>The letters go out from here.</p>
+  <a href="https://knowjack.substack.com/p/paper-airplane" target="_blank" rel="noopener noreferrer">Read on Substack →</a>
+</section>
+
+<footer>
+  <ul class="fnav">
+    <li><a href="/#doors">the three doors</a></li>
+    <li><a href="/#about">about</a></li>
+    <li><a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">newsletter</a></li>
+  </ul>
+  <p class="fcopy">© 2026 Jack Stallings · The Art of the Unfinished</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target);} });
+  },{threshold:0.1});
+  document.querySelectorAll('.movement,.stanza').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
