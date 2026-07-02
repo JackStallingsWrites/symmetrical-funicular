@@ -14,102 +14,135 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
-  <!-- Mux Player (web component) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
   <style>
-    :root{
-      --bg:#0e0d0b; --bg-mid:#141210;
-      --ink:#e8dfd0; --ink-dim:#a09080; --ink-ghost:#5a4f43;
-      --gold:#c8a96e; --gold-dim:#7a6040; --rule:#2a241c;
-      --serif:'Cormorant Garamond',Georgia,serif;
-      --body:'EB Garamond',Georgia,serif;
-      --sans:'Montserrat',Arial,sans-serif;
-      --max:880px;
+    /* Page-specific reading styles — extends /style.css brand tokens */
+    body { padding-top: 0; }
+    .piece-hero {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: calc(5.5rem + var(--gutter)) var(--gutter) 2.5rem;
+      text-align: center;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.18rem;line-height:1.85;-webkit-font-smoothing:antialiased;}
-    a{color:inherit;text-decoration:none;}
-
-    nav{padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);}
-    .wordmark{font-family:var(--sans);font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);transition:color 0.2s;}
-    .wordmark:hover{color:var(--ink);}
-    .nav-links{display:flex;gap:2.25rem;list-style:none;}
-    .nav-links a{font-family:var(--sans);font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim);transition:color 0.2s;}
-    .nav-links a:hover{color:var(--ink);}
-
-    .hero{position:relative;max-width:640px;margin:0 auto;padding:7rem 2.5rem 3rem;overflow:hidden;}
-    .ekg{position:absolute;top:50%;left:0;width:100%;height:160px;transform:translateY(-50%);opacity:0.5;pointer-events:none;z-index:0;}
-    .ekg path{stroke:var(--gold-dim);stroke-width:1.4;fill:none;opacity:0.55;}
-    .hero-eyebrow{font-family:var(--sans);font-size:0.55rem;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:2rem;position:relative;z-index:2;text-align:center;}
-    .hero-title{font-family:var(--serif);font-size:clamp(3rem,8vw,5.5rem);font-weight:400;line-height:1.02;color:var(--ink);text-align:center;position:relative;z-index:2;letter-spacing:-0.01em;}
-    .hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,3vw,1.55rem);color:var(--ink-dim);text-align:center;margin-top:1.25rem;position:relative;z-index:2;}
-
-    .film{max-width:var(--max);margin:0 auto;padding:1.5rem 2.5rem 2rem;opacity:0;transform:translateY(20px);transition:opacity 0.9s ease,transform 0.9s ease;}
-    .film.visible{opacity:1;transform:none;}
-    mux-player{
-      width:100%;
-      aspect-ratio:16/9;
-      display:block;
-      overflow:hidden;
-      border:1px solid var(--rule);
-      --media-background-color:#0E0E10;
-      --media-object-fit:cover;
-      --controls-backdrop-color:rgba(14,14,16,0.55);
-      --media-control-background:transparent;
-      --media-control-hover-background:rgba(232,223,208,0.10);
-      --media-primary-color:#e8dfd0;
-      --media-secondary-color:#e8dfd0;
-      --media-accent-color:#7a6040;
-      --title-display:none;
-      --airplay-button-display:none;
-      --cast-button-display:none;
-      --pip-button-display:none;
-      --playback-rate-button-display:none;
+    .piece-eyebrow {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
     }
-    .film-caption{font-family:var(--body);font-style:italic;font-size:1rem;color:var(--ink-ghost);text-align:center;margin-top:1.75rem;line-height:1.9;}
-
-    .end{max-width:640px;margin:0 auto;padding:3.5rem 2.5rem;border-top:1px solid var(--rule);text-align:center;}
-    .end-mark{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--gold-dim);margin-bottom:2rem;}
-    .end p{font-family:var(--body);font-style:italic;font-size:1rem;color:var(--ink-dim);margin-bottom:1.75rem;}
-    .end a{font-family:var(--sans);font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--gold-dim);padding-bottom:0.18rem;transition:color 0.2s;}
-    .end a:hover{color:var(--gold);}
-
-    footer{padding:3rem 2.5rem;border-top:1px solid var(--rule);text-align:center;}
-    footer .fnav{list-style:none;display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;}
-    footer .fnav a{font-family:var(--sans);font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-ghost);transition:color 0.2s;}
-    footer .fnav a:hover{color:var(--ink-dim);}
-    footer .fcopy{font-family:var(--sans);font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost);}
-
-    @media(max-width:600px){
-      nav{padding:1.25rem 1.5rem;}.nav-links{gap:1.1rem;}
-      .hero,.film,.end{padding-left:1.5rem;padding-right:1.5rem;}
-      .hero{padding-top:5rem;}
+    .piece-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2.4rem, 7vw, 4.4rem);
+      line-height: 1.05;
+      color: var(--bone);
     }
-    @media(prefers-reduced-motion:reduce){
-      .film{opacity:1;transform:none;transition:none;}
+    .piece-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+      color: var(--bone-dim);
+      margin-top: 1.25rem;
+      line-height: 1.7;
+    }
+
+    .cover { max-width: 320px; margin: 0.5rem auto 0; padding: 0 var(--gutter); }
+    .cover img { width: 100%; display: block; border: 1px solid var(--bone-faint); }
+
+    .content-warning {
+      max-width: 640px; margin: 2rem auto 0; padding: 1rem 1.5rem;
+      border: 1px solid var(--bone-faint); background: var(--bone-subtle);
+      text-align: center;
+    }
+    .content-warning p {
+      font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.04em;
+      color: var(--bone-dim); opacity: 0.75; line-height: 1.7;
+    }
+
+    .film { max-width: 880px; margin: 0 auto; padding: 1.5rem var(--gutter) 2rem; }
+    mux-player {
+      width: 100%; aspect-ratio: 16/9; display: block; overflow: hidden;
+      border: 1px solid var(--bone-faint);
+      --media-background-color: var(--ink);
+      --media-object-fit: cover;
+      --controls-backdrop-color: rgba(28,28,28,0.55);
+      --media-control-background: transparent;
+      --media-control-hover-background: rgba(245,240,232,0.10);
+      --media-primary-color: var(--bone);
+      --media-secondary-color: var(--bone);
+      --media-accent-color: var(--gold);
+      --title-display: none;
+      --airplay-button-display: none;
+      --cast-button-display: none;
+      --pip-button-display: none;
+      --playback-rate-button-display: none;
+    }
+    .film-caption {
+      font-family: var(--serif); font-style: italic; font-size: 1rem;
+      color: var(--bone-dim); opacity: 0.7; text-align: center;
+      margin-top: 1.75rem; line-height: 1.9;
+    }
+
+    .piece { max-width: 640px; margin: 0 auto; padding: 1rem var(--gutter) 4rem; border-top: 1px solid var(--bone-faint); }
+
+    .movement { text-align: center; margin: 4rem 0 2rem; opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .movement:first-child { margin-top: 2.5rem; }
+    .movement.visible { opacity: 1; transform: none; }
+    .mv-num { display: block; font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.3em; color: var(--gold); opacity: 0.8; margin-bottom: 0.85rem; }
+    .mv-name { font-family: var(--serif); font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 400; font-style: italic; color: var(--bone); letter-spacing: 0.02em; line-height: 1; }
+    .mv-date { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); opacity: 0.6; margin-top: 0.9rem; }
+
+    .stanza { margin: 0 auto 2.2rem; max-width: 34rem; opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .stanza.visible { opacity: 1; transform: none; }
+    .stanza p { font-size: 1.05rem; line-height: 1.8; color: var(--bone); opacity: 0.92; margin-bottom: 1rem; }
+    .stanza p:last-child { margin-bottom: 0; }
+    .stanza em { font-style: italic; color: var(--bone-dim); }
+    .stanza .cap { font-family: var(--serif); font-size: 3.2rem; line-height: 0.7; float: left; margin: 0.3rem 0.5rem 0 0; color: var(--gold); font-weight: 500; }
+
+    .thesis { text-align: center; margin: 3.2rem 0; opacity: 0; transform: translateY(16px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+    .thesis:first-child { margin-top: 2rem; }
+    .thesis.visible { opacity: 1; transform: none; }
+    .th-num { display: block; font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 0.85rem; }
+    .thesis p { font-size: 1.02rem; line-height: 1.75; color: var(--bone); opacity: 0.92; margin-bottom: 0.85rem; }
+    .thesis p:last-child { margin-bottom: 0; }
+
+    .end { max-width: 640px; margin: 0 auto; padding: 3.5rem var(--gutter); border-top: 1px solid var(--bone-faint); text-align: center; }
+    .end-mark { font-family: var(--serif); font-style: italic; font-size: 1.5rem; color: var(--gold); opacity: 0.85; margin-bottom: 1.75rem; }
+    .end p { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--bone-dim); margin-bottom: 1.5rem; }
+    .end a { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); border-bottom: 1px solid var(--gold); padding-bottom: 0.18rem; transition: color 0.2s; }
+    .end a:hover { color: var(--gold); }
+
+    .footer-inner--slim { grid-template-columns: 1fr 1fr; max-width: 640px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .movement, .stanza, .thesis, .film { opacity: 1; transform: none; transition: none; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="/" class="wordmark">Jack Stallings</a>
-  <ul class="nav-links">
-    <li><a href="/#doors">the three doors</a></li>
-    <li><a href="/#about">about</a></li>
-    <li><a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">newsletter</a></li>
-  </ul>
-</nav>
+  <nav class="nav scrolled" id="nav" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Taste &amp; See Jack — Home">TSJ</a>
+      <div class="nav-links">
+        <a href="/#read" class="nav-anchor">Read</a>
+        <a href="/#hear" class="nav-anchor">Listen</a>
+        <a href="/#confess" class="nav-anchor">Confess</a>
+      </div>
+    </div>
+  </nav>
 
-<header class="hero">
-  <svg class="ekg" viewBox="0 0 640 160" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,80 L180,80 L200,80 L210,40 L222,120 L234,80 L420,80 L440,80 L452,20 L464,140 L476,80 L640,80" />
-  </svg>
-  <p class="hero-eyebrow">Jack Stallings · Film</p>
-  <h1 class="hero-title">Maiden Mary</h1>
-  <p class="hero-sub">four-foot something</p>
+<header class="piece-hero">
+  <span class="piece-eyebrow">Jack Stallings · Film</span>
+  <h1 class="piece-title">Maiden Mary</h1>
+  <p class="piece-sub">four-foot something</p>
 </header>
 
 <section class="film">
@@ -120,7 +153,6 @@
     metadata-video-title="Maiden Mary: Four-Foot Something"
     metadata-viewer-user-id="anonymous"
     preload="metadata"
-    accent-color="#7a6040"
   ></mux-player>
   <p class="film-caption">For the women who stayed small<br>and grew everything.</p>
 </section>
@@ -131,14 +163,27 @@
   <a href="https://knowjack.substack.com/p/maiden-mary" target="_blank" rel="noopener noreferrer">Read on Substack →</a>
 </section>
 
-<footer>
-  <ul class="fnav">
-    <li><a href="/#doors">the three doors</a></li>
-    <li><a href="/#about">about</a></li>
-    <li><a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">newsletter</a></li>
-  </ul>
-  <p class="fcopy">© 2026 Jack Stallings · The Art of the Unfinished</p>
-</footer>
+  <footer class="footer" id="footer">
+    <div class="footer-rule" aria-hidden="true"></div>
+    <div class="footer-inner footer-inner--slim">
+      <div class="footer-brand fade-in">
+        <p class="footer-logo">TSJ</p>
+        <p class="footer-tagline">Taste &amp; See Jack</p>
+        <p class="footer-copy">© 2026 Jack Stallings. All rights reserved.</p>
+      </div>
+      <div class="footer-links fade-in">
+        <h3 class="footer-section-title">Find Jack</h3>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="/#about">About</a>
+          <a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">Newsletter</a>
+          <a href="/#doors">The Three Rooms</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Built to outlast the quiet. The table is still set.</p>
+    </div>
+  </footer>
 
 <script>
   const obs = new IntersectionObserver((entries)=>{
