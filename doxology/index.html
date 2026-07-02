@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doxology, Pt. One — Jack Stallings</title>
+  <meta name="description" content="Thanksgiving as a covered dish nobody opens. On grief that won't be trimmed into a happy shape, and the inheritance you don't get to refuse." />
+  <meta property="og:title" content="Doxology, Pt. One" />
+  <meta property="og:description" content="On grief that won't be trimmed into a happy shape, and the inheritance you don't get to refuse. — Jack Stallings" />
+  <meta property="og:url" content="https://jackstallings.com/doxology" />
+  <link rel="canonical" href="https://jackstallings.com/doxology" />
+  <link rel="icon" type="image/png" href="https://substack-post-media.s3.amazonaws.com/public/images/e2cbf753-2581-4e33-b10f-273f3bedc24b_1280x1280.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0e0d0b; --bg-mid:#141210;
+      --ink:#e8dfd0; --ink-dim:#a09080; --ink-ghost:#5a4f43;
+      --gold:#c8a96e; --gold-dim:#7a6040; --rule:#2a241c;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --body:'EB Garamond',Georgia,serif;
+      --sans:'Montserrat',Arial,sans-serif;
+      --max:640px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.18rem;line-height:1.85;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+
+    nav{padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);}
+    .wordmark{font-family:var(--sans);font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);transition:color 0.2s;}
+    .wordmark:hover{color:var(--ink);}
+    .nav-links{display:flex;gap:2.25rem;list-style:none;}
+    .nav-links a{font-family:var(--sans);font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim);transition:color 0.2s;}
+    .nav-links a:hover{color:var(--ink);}
+
+    .hero{position:relative;max-width:var(--max);margin:0 auto;padding:7rem 2.5rem 3.5rem;overflow:hidden;}
+    .ekg{position:absolute;top:50%;left:0;width:100%;height:160px;transform:translateY(-50%);opacity:0.5;pointer-events:none;z-index:0;}
+    .ekg path{stroke:var(--gold-dim);stroke-width:1.4;fill:none;opacity:0.55;}
+    .hero-eyebrow{font-family:var(--sans);font-size:0.55rem;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:2rem;position:relative;z-index:2;text-align:center;}
+    .hero-title{font-family:var(--serif);font-size:clamp(3rem,8vw,5.5rem);font-weight:400;line-height:1.02;color:var(--ink);text-align:center;position:relative;z-index:2;letter-spacing:-0.01em;}
+    .hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,3vw,1.55rem);color:var(--ink-dim);text-align:center;margin-top:1.25rem;position:relative;z-index:2;}
+    .hero-meta{font-family:var(--body);font-style:italic;font-size:1rem;color:var(--ink-ghost);text-align:center;margin-top:2.5rem;line-height:1.9;position:relative;z-index:2;}
+
+    .piece{max-width:var(--max);margin:0 auto;padding:2rem 2.5rem 4rem;border-top:1px solid var(--rule);}
+
+    .movement{text-align:center;margin:4.5rem 0 2.75rem;opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .movement:first-child{margin-top:1rem;}
+    .movement.visible{opacity:1;transform:none;}
+    .mv-num{display:block;font-family:var(--sans);font-size:0.55rem;letter-spacing:0.3em;color:var(--gold-dim);margin-bottom:0.85rem;}
+    .mv-name{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.3rem);font-weight:500;font-style:italic;color:var(--ink);letter-spacing:0.04em;line-height:1;}
+
+    /* verse — preserve line breaks, center the stanza column */
+    .stanza{margin:0 auto 2.4rem;max-width:30rem;opacity:0;transform:translateY(16px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .stanza.visible{opacity:1;transform:none;}
+    .stanza p{font-size:1.12rem;line-height:1.65;color:var(--ink);}
+    .stanza em{font-style:italic;color:var(--ink-dim);}
+    .stanza .cap{font-family:var(--serif);font-size:3.4rem;line-height:0.7;float:left;margin:0.32rem 0.5rem 0 0;color:var(--gold);font-weight:500;}
+
+    .end{max-width:var(--max);margin:0 auto;padding:3.5rem 2.5rem;border-top:1px solid var(--rule);text-align:center;}
+    .end-mark{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--gold-dim);margin-bottom:2rem;}
+    .end p{font-family:var(--body);font-style:italic;font-size:1rem;color:var(--ink-dim);margin-bottom:1.75rem;}
+    .end a{font-family:var(--sans);font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--gold-dim);padding-bottom:0.18rem;transition:color 0.2s;}
+    .end a:hover{color:var(--gold);}
+
+    footer{padding:3rem 2.5rem;border-top:1px solid var(--rule);text-align:center;}
+    footer .fnav{list-style:none;display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;}
+    footer .fnav a{font-family:var(--sans);font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-ghost);transition:color 0.2s;}
+    footer .fnav a:hover{color:var(--ink-dim);}
+    footer .fcopy{font-family:var(--sans);font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost);}
+
+    @media(max-width:600px){
+      nav{padding:1.25rem 1.5rem;}.nav-links{gap:1.1rem;}
+      .hero,.piece,.end{padding-left:1.5rem;padding-right:1.5rem;}
+      .hero{padding-top:5rem;}
+      body{font-size:1.1rem;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .movement,.stanza{opacity:1;transform:none;transition:none;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="wordmark">Jack Stallings</a>
+  <ul class="nav-links">
+    <li><a href="/#doors">the three doors</a></li>
+    <li><a href="/#about">about</a></li>
+    <li><a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">newsletter</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <svg class="ekg" viewBox="0 0 640 160" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,80 L180,80 L200,80 L210,40 L222,120 L234,80 L420,80 L440,80 L452,20 L464,140 L476,80 L640,80" />
+  </svg>
+  <p class="hero-eyebrow">Jack Stallings · A series in parts</p>
+  <h1 class="hero-title">Doxology</h1>
+  <p class="hero-sub">part one · in Red Wilkes clay</p>
+  <p class="hero-meta">Thanksgiving as a covered dish nobody opens.<br>Grief that won't be trimmed into a happy shape,<br>and the inheritance you don't get to refuse.</p>
+</header>
+
+<main class="piece">
+
+  <div class="movement" data-mv="1">
+    <span class="mv-num">I</span>
+    <h2 class="mv-name">The Table</h2>
+  </div>
+
+  <div class="stanza">
+    <p><span class="cap">T</span>hanksgiving—<br>
+    a word folks set on the table<br>
+    like a covered dish,<br>
+    and my tongue keeps finding pennies.</p>
+  </div>
+
+  <div class="stanza">
+    <p>When my granddad died before dinner time—<br>
+    like mashed taters sliding off the spoon—<br>
+    we tried to patch the hole<br>
+    with construction paper.</p>
+  </div>
+
+  <div class="stanza">
+    <p>Handprint turkeys.<br>
+    Little palms in orange paint,<br>
+    feathers glued on crooked,<br>
+    Elmer's dripped smiles on carpet—<br>
+    while scissors flew to chew the edge.<br>
+    While relatives muttered, <em>how cute.</em></p>
+  </div>
+
+  <div class="stanza">
+    <p>Like glue could hold a family in place.<br>
+    Like grief can be trimmed<br>
+    into a happy fun shape.</p>
+  </div>
+
+  <div class="stanza">
+    <p>Yet the river kept running—<br>
+    red-brown,<br>
+    carrying the names<br>
+    we don't say anymore.</p>
+  </div>
+
+  <div class="movement" data-mv="2">
+    <span class="mv-num">II</span>
+    <h2 class="mv-name">The Hill</h2>
+  </div>
+
+  <div class="stanza">
+    <p><span class="cap">U</span>p on the Appalachian slope<br>
+    a house glowed through bare branches,<br>
+    porchlight calling moths—<br>
+    and the closer we got<br>
+    the more it pushed.</p>
+  </div>
+
+  <div class="stanza">
+    <p>Magnetic hill makes the body screech,<br>
+    lugnuts release; sparks panic,<br>
+    like you're not welcome.</p>
+  </div>
+
+  <div class="stanza">
+    <p>Scraping sting from the perspective of<br>
+    a goat, uninvited by his mother—<br>
+    on the holidays, déjà-vu, all over.</p>
+  </div>
+
+  <div class="movement" data-mv="3">
+    <span class="mv-num">III</span>
+    <h2 class="mv-name">The Deer</h2>
+  </div>
+
+  <div class="stanza">
+    <p><span class="cap">J</span>ust two deer<br>
+    staring at headlights,<br>
+    tryin' to make sense of the night.<br>
+    The bloody coincidence in Inheritance.</p>
+  </div>
+
+</main>
+
+<section class="end">
+  <p class="end-mark">∴</p>
+  <p>Doxology continues in Pt. Two.</p>
+  <a href="https://knowjack.substack.com/p/doxology-pt-one" target="_blank" rel="noopener noreferrer">Read on Substack →</a>
+</section>
+
+<footer>
+  <ul class="fnav">
+    <li><a href="/#doors">the three doors</a></li>
+    <li><a href="/#about">about</a></li>
+    <li><a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">newsletter</a></li>
+  </ul>
+  <p class="fcopy">© 2026 Jack Stallings · The Art of the Unfinished</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target);} });
+  },{threshold:0.12});
+  document.querySelectorAll('.movement,.stanza').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
