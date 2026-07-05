@@ -859,6 +859,101 @@ body {
 }
 
 /* Analog Bridge column */
+/* ═══════════════════════════════════════════
+   STUDIO BY JACK
+   ═══════════════════════════════════════════ */
+.studio {
+  padding: clamp(4rem, 8vw, 7rem) var(--gutter) clamp(5rem, 9vw, 9rem);
+  border-top: 1px solid var(--bone-faint);
+}
+.studio-header {
+  max-width: var(--max-w);
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+.studio-intro {
+  max-width: 34rem;
+  margin: 1rem auto 0;
+  font-size: 0.95rem;
+  color: var(--bone-dim);
+  line-height: 1.7;
+}
+.studio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: var(--max-w);
+  margin: 0 auto;
+  border: 1px solid var(--bone-faint);
+}
+.studio-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(2rem, 3.5vw, 2.75rem) clamp(1.5rem, 3vw, 2.25rem);
+  min-height: 220px;
+  border-right: 1px solid var(--bone-faint);
+  border-bottom: 1px solid var(--bone-faint);
+  text-decoration: none;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.studio-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(145deg, rgba(122,30,30,0.30) 0%, rgba(122,30,30,0.06) 100%);
+  transition: opacity 0.45s var(--ease);
+  pointer-events: none;
+}
+.studio-tile:hover::before { opacity: 1; }
+.studio-tile:hover { border-color: var(--oxblood); }
+.studio-tag {
+  position: relative;
+  z-index: 1;
+  font-size: 0.6375rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+}
+.studio-title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 400;
+  color: var(--bone);
+  line-height: 1.15;
+}
+.studio-desc {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  color: var(--bone-dim);
+  line-height: 1.65;
+  flex: 1;
+}
+.studio-status {
+  position: relative;
+  z-index: 1;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+}
+.studio-status--live {
+  color: var(--oxblood);
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 0.82rem;
+}
+@media (max-width: 860px) {
+  .studio-grid { grid-template-columns: 1fr; }
+  .studio-tile { border-right: none; }
+}
+
 .footer-section-title {
   font-family: var(--serif);
   font-size: 1.125rem;
