@@ -8,28 +8,6 @@
 
 'use strict';
 
-/* ─── 0. Path routing ───────────────────────────────────────── */
-(function initRouting() {
-  const routes = {
-    '/read':        '#about',
-    '/listen':      '#doors',
-    '/hear':        '#doors',
-    '/confess':     '#doors',
-    '/unredacted':  '#doors',
-  };
-
-  const path = window.location.pathname.replace(/\/$/, '').toLowerCase();
-  const target = routes[path];
-  if (!target) return;
-
-  // Push clean URL then scroll after fonts/layout settle
-  window.history.replaceState(null, '', '/');
-  window.addEventListener('load', () => {
-    const el = document.querySelector(target);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-})();
-
 /* ─── 1. Sticky Nav ─────────────────────────────────────────── */
 (function initNav() {
   const nav = document.getElementById('nav');
