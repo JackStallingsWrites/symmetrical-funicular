@@ -15,8 +15,8 @@
     X-XSS-Protection           = "1; mode=block"
     Referrer-Policy            = "strict-origin-when-cross-origin"
     Permissions-Policy         = "camera=(), microphone=(), geolocation=()"
-    # Allow: self, Google Fonts, rss2json API, Substack images
-    Content-Security-Policy    = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://api.rss2json.com; img-src * data:; frame-ancestors 'none'"
+    # Allow: self, Google Fonts, rss2json API, Substack images, Descript embeds
+    Content-Security-Policy    = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://api.rss2json.com; img-src * data:; media-src https://substack-post-media.s3.amazonaws.com https://substackcdn.com; frame-src https://share.descript.com; frame-ancestors 'none'"
 
 # ─── Cache static assets ─────────────────────────────────────────
 [[headers]]
@@ -48,6 +48,17 @@
   for = "/*.svg"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# ─── Named redirects ─────────────────────────────────────────────
+[[redirects]]
+  from   = "/theses"
+  to     = "https://knowjack.substack.com/p/95-theses?r=3895d8"
+  status = 301
+
+[[redirects]]
+  from   = "/95-theses"
+  to     = "https://knowjack.substack.com/p/95-theses?r=3895d8"
+  status = 301
 
 # ─── SPA fallback (serves index.html for any unmatched path) ─────
 [[redirects]]

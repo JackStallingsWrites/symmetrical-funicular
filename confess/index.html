@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An adults-only podcast about desire, power, the body, consent, and saying the quiet thing plainly.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Velvet Kink Confessional — Jack Stallings">
+  <meta property="og:description" content="An adults-only podcast about desire, power, the body, consent, and saying the quiet thing plainly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jackstallings.com/confess/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Velvet Kink Confessional — Jack Stallings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #1C1C1C;
+      --bone:       #F5F0E8;
+      --bone-dim:   rgba(245, 240, 232, 0.62);
+      --bone-faint: rgba(245, 240, 232, 0.10);
+      --oxblood:    #7A1E1E;
+      --oxblood-light:#A33A35;
+      --rule:       rgba(245, 240, 232, 0.12);
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--bone);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--oxblood); color: var(--bone); }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem clamp(1.25rem, 5vw, 3rem);
+      background: rgba(28, 28, 28, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bone-faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--oxblood);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-link {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--bone-dim);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--bone); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--bone);
+      background: var(--oxblood);
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--oxblood-light); }
+
+    /* ── Page ── */
+    .page {
+      max-width: 38rem;
+      margin: 0 auto;
+      padding: 7rem clamp(1.25rem, 6vw, 2rem) 5rem;
+    }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.64rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 1.4rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(2.2rem, 7vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+
+    /* ── 18+ Warning ── */
+    .warning-block {
+      border: 1px solid var(--oxblood);
+      border-radius: 2px;
+      background: rgba(122, 30, 30, 0.08);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .warning-label {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--oxblood);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .warning-text {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--bone-dim);
+    }
+
+    /* ── Consent statement ── */
+    .consent-statement {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--bone);
+      line-height: 1.55;
+      margin-bottom: 2.5rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--oxblood);
+    }
+
+    .rule {
+      border: 0;
+      height: 1px;
+      background: var(--rule);
+      margin: 2.5rem 0;
+    }
+
+    .body-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--bone-dim);
+      margin-bottom: 1.5rem;
+    }
+
+    .body-text strong {
+      color: var(--bone);
+      font-weight: 500;
+    }
+
+    .sub-text {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 2rem;
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      margin-top: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--oxblood);
+      color: var(--bone);
+      padding: 0.85rem 2.25rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--oxblood-light); }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--bone-faint);
+    }
+
+    @media (max-width: 600px) {
+      .nav-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-logo">TSJ</a>
+    <div class="nav-links">
+      <a href="/#about" class="nav-link">Writing</a>
+      <a href="/listen/" class="nav-link">Listen</a>
+      <a href="/confess/" class="nav-link">Confess</a>
+      <a href="https://knowjack.substack.com/subscribe" class="nav-cta" target="_blank" rel="noopener noreferrer">Subscribe</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <p class="eyebrow">The Hearth &middot; Confess</p>
+    <h1>Velvet Kink Confessional</h1>
+
+    <div class="warning-block">
+      <div class="warning-label">18+ &middot; Adults Only</div>
+      <p class="warning-text">This room contains explicit conversations about desire, power, the body, and consent. Enter with care.</p>
+    </div>
+
+    <p class="consent-statement">Consent is the floor. Shame is not the host.</p>
+
+    <p class="body-text">Where the private becomes the political. Conversations about desire, power, the body, and saying the quiet thing plainly.</p>
+
+    <p class="body-text">For adults ready for the other door.</p>
+
+    <p class="sub-text">First recordings underway &middot; June 2026</p>
+
+    <div class="cta-block">
+      <a href="https://knowjack.substack.com/subscribe" class="btn" target="_blank" rel="noopener noreferrer">Follow on Substack &rarr;</a>
+    </div>
+
+    <footer class="footer">
+      <span>&copy; 2026 Jack Stallings. The Art of the Unfinished.</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>

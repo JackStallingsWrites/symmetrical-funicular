@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jack Stallings is a Charlotte-based writer, podcaster, Army veteran, former pastor, and witness behind Taste &amp; See Jack.">
+  <meta property="og:title" content="About — Jack Stallings">
+  <meta property="og:description" content="Jack Stallings is a Charlotte-based writer, podcaster, Army veteran, former pastor, and witness behind Taste &amp; See Jack.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jackstallings.com/about/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>About — Jack Stallings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #1C1C1C;
+      --bone:       #F5F0E8;
+      --bone-dim:   rgba(245, 240, 232, 0.62);
+      --bone-faint: rgba(245, 240, 232, 0.10);
+      --oxblood:    #7A1E1E;
+      --oxblood-light:#A33A35;
+      --rule:       rgba(245, 240, 232, 0.12);
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--bone);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--oxblood); color: var(--bone); }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem clamp(1.25rem, 5vw, 3rem);
+      background: rgba(28, 28, 28, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bone-faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--oxblood);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-link {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--bone-dim);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--bone); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--bone);
+      background: var(--oxblood);
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--oxblood-light); }
+
+    /* ── Page ── */
+    .page {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 7rem clamp(1.25rem, 6vw, 2rem) 5rem;
+    }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.64rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 1.4rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 2.5rem;
+    }
+
+    .rule {
+      border: 0;
+      height: 1px;
+      background: var(--rule);
+      margin: 2.5rem 0;
+    }
+
+    /* ── Bio ── */
+    .bio {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--bone-dim);
+      margin-bottom: 1.5rem;
+      max-width: 38rem;
+    }
+    .bio strong {
+      color: var(--bone);
+      font-weight: 500;
+    }
+
+    /* ── Facts grid ── */
+    .facts-label {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .fact-cell {
+      background: var(--ink);
+      padding: 1.25rem 1.35rem;
+    }
+
+    .fact-label {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+
+    .fact-value {
+      font-size: 0.9rem;
+      color: var(--bone);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    /* ── Subscribe nudge ── */
+    .subscribe-nudge {
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--bone-faint);
+      border-radius: 2px;
+      text-align: center;
+    }
+    .subscribe-nudge p {
+      font-size: 0.92rem;
+      color: var(--bone-dim);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--oxblood);
+      color: var(--bone);
+      padding: 0.85rem 2.25rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--oxblood-light); }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--bone-faint);
+    }
+
+    @media (max-width: 700px) {
+      .facts-grid { grid-template-columns: 1fr; }
+      .nav-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-logo">TSJ</a>
+    <div class="nav-links">
+      <a href="/#about" class="nav-link">Writing</a>
+      <a href="/listen/" class="nav-link">Listen</a>
+      <a href="/confess/" class="nav-link">Confess</a>
+      <a href="https://knowjack.substack.com/subscribe" class="nav-cta" target="_blank" rel="noopener noreferrer">Subscribe</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <p class="eyebrow">Who Is Jack</p>
+    <h1>A witness, not a performance.</h1>
+
+    <p class="bio">Jack Stallings is a writer, podcaster, and theologian of friction working at the intersection of grief, masculinity, and faith. His work lives in the spaces institutions forget — the concrete hearth, the porch argument, the letter that never got sent.</p>
+
+    <p class="bio">He is the creator of <em>Muses &amp; Roots</em> and <em>Velvet Kink Confessional</em>, and the author of dispatches published through the Taste &amp; See Jack newsletter. He is currently in the quiet, but the table is still set.</p>
+
+    <hr class="rule">
+
+    <p class="facts-label">The particulars</p>
+
+    <div class="facts-grid">
+      <div class="fact-cell">
+        <div class="fact-label">From</div>
+        <div class="fact-value">Startown, NC</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Based</div>
+        <div class="fact-value">Charlotte, NC</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Service</div>
+        <div class="fact-value">U.S. Army veteran</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Education</div>
+        <div class="fact-value">M.Div., Hood Theological Seminary</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Writing</div>
+        <div class="fact-value">Essays, fiction, poetry, dispatches</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Podcast</div>
+        <div class="fact-value">Muses &amp; Roots</div>
+      </div>
+    </div>
+
+    <div class="subscribe-nudge">
+      <p>Stay in the room. Monthly letters on grief, masculinity, faith, and the theology of friction.</p>
+      <a href="https://knowjack.substack.com/subscribe" class="btn" target="_blank" rel="noopener noreferrer">Pull Up a Chair &rarr;</a>
+    </div>
+
+    <footer class="footer">
+      <span>&copy; 2026 Jack Stallings. The Art of the Unfinished.</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>

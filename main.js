@@ -1,9 +1,8 @@
 /* ═══════════════════════════════════════════════════════════════
    main.js — Taste & See Jack (jackstallings.com)
-   1. Path-based scroll routing  (/read → #about, etc.)
-   2. Sticky nav on scroll
-   3. Fade-in observer for all .fade-in elements
-   4. Live RSS feed via rss2json.com, cached in localStorage 1hr
+   1. Sticky nav on scroll
+   2. Fade-in observer for all .fade-in elements
+   3. Live RSS feed via rss2json.com, cached in localStorage 1hr
    ═══════════════════════════════════════════════════════════════ */
 
 'use strict';

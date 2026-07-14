@@ -1,196 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maiden Mary — Jack Stallings</title>
-  <meta name="description" content="Four-foot something in a garden at last light. A short film." />
-  <meta property="og:title" content="Maiden Mary" />
-  <meta property="og:description" content="Four-foot something in a garden at last light. A short film. — Jack Stallings" />
-  <meta property="og:type" content="video.other" />
-  <meta property="og:url" content="https://jackstallings.com/maiden-mary" />
-  <meta property="og:image" content="https://jackstallings.com/maiden-mary/maiden-mary-poster.jpg" />
-  <link rel="canonical" href="https://jackstallings.com/maiden-mary" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A short film and poem for the women who stayed small and grew everything. Jack Stallings, June 2026.">
+  <meta property="og:title" content="Maiden Mary: Four-Foot Something — Jack Stallings">
+  <meta property="og:description" content="A short film and poem for the women who stayed small and grew everything.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jackstallings.com/maiden-mary/">
+  <meta property="og:image" content="https://jackstallings.com/og-image.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Maiden Mary: Four-Foot Something — Jack Stallings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Page-specific reading styles — extends /style.css brand tokens */
-    body { padding-top: 0; }
-    .piece-hero {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: calc(5.5rem + var(--gutter)) var(--gutter) 2.5rem;
-      text-align: center;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:          #1C1C1C;
+      --bone:         #F5F0E8;
+      --bone-dim:     rgba(245, 240, 232, 0.62);
+      --bone-faint:   rgba(245, 240, 232, 0.10);
+      --oxblood:      #7A1E1E;
+      --oxblood-light:#A33A35;
+      --rule:         rgba(245, 240, 232, 0.12);
+      --serif:        'EB Garamond', 'Georgia', serif;
+      --sans:         'Inter', system-ui, sans-serif;
     }
-    .piece-eyebrow {
-      display: block;
-      font-family: var(--sans);
-      font-size: 0.6875rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.85;
-      margin-bottom: 1.5rem;
-    }
-    .piece-title {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(2.4rem, 7vw, 4.4rem);
-      line-height: 1.05;
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
       color: var(--bone);
-    }
-    .piece-sub {
       font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
-      color: var(--bone-dim);
-      margin-top: 1.25rem;
-      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    .cover { max-width: 320px; margin: 0.5rem auto 0; padding: 0 var(--gutter); }
-    .cover img { width: 100%; display: block; border: 1px solid var(--bone-faint); }
+    ::selection { background: var(--oxblood); color: var(--bone); }
 
-    .content-warning {
-      max-width: 640px; margin: 2rem auto 0; padding: 1rem 1.5rem;
-      border: 1px solid var(--bone-faint); background: var(--bone-subtle);
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem clamp(1.25rem, 5vw, 3rem);
+      background: rgba(28, 28, 28, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bone-faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--oxblood);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-link {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--bone-dim);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--bone); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--bone);
+      background: var(--oxblood);
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--oxblood-light); }
+
+    /* ── Page ── */
+    .page {
+      max-width: 34rem;
+      margin: 0 auto;
+      padding: 7rem clamp(1.25rem, 6vw, 2rem) 5rem;
+    }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.64rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 1.4rem;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: clamp(2rem, 7vw, 2.9rem);
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.45rem;
+    }
+
+    .subtitle {
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--bone-dim);
+      margin-bottom: 2.5rem;
+    }
+
+    .masthead-rule {
+      border: 0;
+      height: 1px;
+      background: var(--rule);
+      margin: 2.5rem 0 2.8rem;
+    }
+
+    /* ── Film embed ── */
+    .player-wrap {
+      margin-bottom: 3.5rem;
+    }
+
+    .film-embed {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 2px;
+      overflow: hidden;
+      background: #0E0E10;
+    }
+
+    .film-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── Poem ── */
+    .poem {
+      font-size: clamp(1rem, 2.6vw, 1.11rem);
+      line-height: 1.82;
+      letter-spacing: 0.008em;
+    }
+
+    .poem p {
+      margin-bottom: 1.6rem;
+    }
+
+    .poem p.open {
+      font-size: clamp(1.1rem, 3vw, 1.22rem);
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .poem p.record {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      color: var(--bone-dim);
+      border-left: 2px solid var(--rule);
+      padding-left: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .poem p.tail {
+      font-style: italic;
+      color: var(--bone-dim);
+    }
+
+    /* ── Colophon ── */
+    .colophon {
+      margin-top: 3.4rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.13em;
+      line-height: 1.9;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+    }
+    .colophon .name { color: var(--bone-dim); }
+
+    /* ── Subscribe nudge ── */
+    .subscribe-nudge {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      border: 1px solid var(--bone-faint);
+      border-radius: 2px;
       text-align: center;
     }
-    .content-warning p {
-      font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.04em;
-      color: var(--bone-dim); opacity: 0.75; line-height: 1.7;
+    .subscribe-nudge p {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--bone-dim);
+      line-height: 1.7;
+      margin-bottom: 1rem;
     }
-
-    .film { max-width: 880px; margin: 0 auto; padding: 1.5rem var(--gutter) 2rem; }
-    mux-player {
-      width: 100%; aspect-ratio: 16/9; display: block; overflow: hidden;
-      border: 1px solid var(--bone-faint);
-      --media-background-color: var(--ink);
-      --media-object-fit: cover;
-      --controls-backdrop-color: rgba(28,28,28,0.55);
-      --media-control-background: transparent;
-      --media-control-hover-background: rgba(245,240,232,0.10);
-      --media-primary-color: var(--bone);
-      --media-secondary-color: var(--bone);
-      --media-accent-color: var(--gold);
-      --title-display: none;
-      --airplay-button-display: none;
-      --cast-button-display: none;
-      --pip-button-display: none;
-      --playback-rate-button-display: none;
+    .btn {
+      display: inline-block;
+      background: var(--oxblood);
+      color: var(--bone);
+      padding: 0.75rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
     }
-    .film-caption {
-      font-family: var(--serif); font-style: italic; font-size: 1rem;
-      color: var(--bone-dim); opacity: 0.7; text-align: center;
-      margin-top: 1.75rem; line-height: 1.9;
-    }
+    .btn:hover { background: var(--oxblood-light); }
 
-    .piece { max-width: 640px; margin: 0 auto; padding: 1rem var(--gutter) 4rem; border-top: 1px solid var(--bone-faint); }
-
-    .movement { text-align: center; margin: 4rem 0 2rem; opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-    .movement:first-child { margin-top: 2.5rem; }
-    .movement.visible { opacity: 1; transform: none; }
-    .mv-num { display: block; font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.3em; color: var(--gold); opacity: 0.8; margin-bottom: 0.85rem; }
-    .mv-name { font-family: var(--serif); font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 400; font-style: italic; color: var(--bone); letter-spacing: 0.02em; line-height: 1; }
-    .mv-date { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); opacity: 0.6; margin-top: 0.9rem; }
-
-    .stanza { margin: 0 auto 2.2rem; max-width: 34rem; opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-    .stanza.visible { opacity: 1; transform: none; }
-    .stanza p { font-size: 1.05rem; line-height: 1.8; color: var(--bone); opacity: 0.92; margin-bottom: 1rem; }
-    .stanza p:last-child { margin-bottom: 0; }
-    .stanza em { font-style: italic; color: var(--bone-dim); }
-    .stanza .cap { font-family: var(--serif); font-size: 3.2rem; line-height: 0.7; float: left; margin: 0.3rem 0.5rem 0 0; color: var(--gold); font-weight: 500; }
-
-    .thesis { text-align: center; margin: 3.2rem 0; opacity: 0; transform: translateY(16px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
-    .thesis:first-child { margin-top: 2rem; }
-    .thesis.visible { opacity: 1; transform: none; }
-    .th-num { display: block; font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 0.85rem; }
-    .thesis p { font-size: 1.02rem; line-height: 1.75; color: var(--bone); opacity: 0.92; margin-bottom: 0.85rem; }
-    .thesis p:last-child { margin-bottom: 0; }
-
-    .end { max-width: 640px; margin: 0 auto; padding: 3.5rem var(--gutter); border-top: 1px solid var(--bone-faint); text-align: center; }
-    .end-mark { font-family: var(--serif); font-style: italic; font-size: 1.5rem; color: var(--gold); opacity: 0.85; margin-bottom: 1.75rem; }
-    .end p { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--bone-dim); margin-bottom: 1.5rem; }
-    .end a { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); border-bottom: 1px solid var(--gold); padding-bottom: 0.18rem; transition: color 0.2s; }
-    .end a:hover { color: var(--gold); }
-
-    .footer-inner--slim { grid-template-columns: 1fr 1fr; max-width: 640px; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .movement, .stanza, .thesis, .film { opacity: 1; transform: none; transition: none; }
+    @media (max-width: 600px) {
+      .nav-link { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="nav scrolled" id="nav" aria-label="Site navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Taste &amp; See Jack — Home">TSJ</a>
-      <div class="nav-links">
-        <a href="/#read" class="nav-anchor">Read</a>
-        <a href="/#hear" class="nav-anchor">Listen</a>
-        <a href="/#confess" class="nav-anchor">Confess</a>
-      </div>
+  <nav class="nav">
+    <a href="/" class="nav-logo">TSJ</a>
+    <div class="nav-links">
+      <a href="/#about" class="nav-link">Writing</a>
+      <a href="/listen/" class="nav-link">Listen</a>
+      <a href="/confess/" class="nav-link">Confess</a>
+      <a href="https://knowjack.substack.com/subscribe" class="nav-cta" target="_blank" rel="noopener noreferrer">Subscribe</a>
     </div>
   </nav>
 
-<header class="piece-hero">
-  <span class="piece-eyebrow">Jack Stallings · Film</span>
-  <h1 class="piece-title">Maiden Mary</h1>
-  <p class="piece-sub">four-foot something</p>
-</header>
+  <div class="page">
 
-<section class="film">
-  <mux-player
-    playback-id="X01DkqGRM8aF007ygHWFEju500X5kqanAXYpg6ONTowhdI"
-    poster="/maiden-mary/maiden-mary-poster.jpg"
-    placeholder="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    metadata-video-title="Maiden Mary: Four-Foot Something"
-    metadata-viewer-user-id="anonymous"
-    preload="metadata"
-  ></mux-player>
-  <p class="film-caption">For the women who stayed small<br>and grew everything.</p>
-</section>
+    <p class="eyebrow">Taste &amp; See Jack &middot; Film + Poem &middot; Jun 10, 2026</p>
+    <h1>Maiden Mary</h1>
+    <p class="subtitle">Four-Foot Something</p>
 
-<section class="end">
-  <p class="end-mark">∴</p>
-  <p>The letters go out from here.</p>
-  <a href="https://knowjack.substack.com/p/maiden-mary" target="_blank" rel="noopener noreferrer">Read on Substack →</a>
-</section>
+    <hr class="masthead-rule">
 
-  <footer class="footer" id="footer">
-    <div class="footer-rule" aria-hidden="true"></div>
-    <div class="footer-inner footer-inner--slim">
-      <div class="footer-brand fade-in">
-        <p class="footer-logo">TSJ</p>
-        <p class="footer-tagline">Taste &amp; See Jack</p>
-        <p class="footer-copy">© 2026 Jack Stallings. All rights reserved.</p>
-      </div>
-      <div class="footer-links fade-in">
-        <h3 class="footer-section-title">Find Jack</h3>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="/#about">About</a>
-          <a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">Newsletter</a>
-          <a href="/#doors">The Three Rooms</a>
-        </nav>
+    <div class="player-wrap">
+      <div class="film-embed">
+        <iframe
+          src="https://share.descript.com/embed/jg4KVSJm46e"
+          allowfullscreen
+          title="Maiden Mary: Four-Foot Something"
+        ></iframe>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>Built to outlast the quiet. The table is still set.</p>
-    </div>
-  </footer>
 
-<script>
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target);} });
-  },{threshold:0.12});
-  document.querySelectorAll('.film').forEach(el=>obs.observe(el));
-</script>
+    <div class="poem">
+
+      <p class="open">Four foot something, and all of it decided.</p>
+
+      <p>She lived her whole life on Providence Mill Road — four rooms, half an acre, muscadine vines and rusted wire.</p>
+
+      <p>Born the year the banks folded, she fetched water in a rusted tin pail from a creek that didn't ask, only gave cold.</p>
+
+      <p>One of thirteen beneath a tin roof — each a hunger, a hand, a prayer half-finished.</p>
+
+      <p>Mill country: textile looms, furniture frames, the church the only architecture touting prominence, centrality, enough —</p>
+
+      <p>until you cross the threshold and find yourself on the floor.</p>
+
+      <p>Her first husband (owner) — G-d's man, preaching with fists, leaving more bruises than holiness.</p>
+
+      <p>She endures him like winter: lips tight, spine straight, hands busy.</p>
+
+      <p>She grew things from nothing: okra, tomatoes, grief.</p>
+
+      <p>Knew how to prune death from a branch, burn the flue clean, smile with her mouth closed.</p>
+
+      <p>She raised a Hotdog, a Pattie, and a named boy Boo<br>
+      who threw his braces in the creek — like her but not</p>
+
+      <p class="record">On October 1st 19 and 74 — they made it official:<br>
+      For Ten 10 Dollars. Vance and Mary owned an estate by entirety —</p>
+
+      <p>which is when two people hold something<br>
+      until one of them cain't.</p>
+
+      <p>She didn't choose providence.</p>
+
+      <p>She simply stayed.</p>
+
+      <p>where the mill roared, until it didn't</p>
+
+      <p>pressing against silence.</p>
+
+      <p>until V's heart said, 'goodbye.'</p>
+
+      <p>After, she spoke more, to the dog than the world.</p>
+
+      <p>Named her Princess — as if something, somewhere, still deserved softness.</p>
+
+      <p>The house stayed twenty years behind: toys in a trash can, foil-wrapped sweet 'taters, the patterned green linoleum curling like memory.</p>
+
+      <p>reminding me she never left street in Catawba County, never had to.</p>
+
+      <p>Grief travels well — found her in the garden, in the click of The Price Is Right, in cold livermush tasting exactly like the past.</p>
+
+      <p>She was hard-headed.<br>
+      Said so herself.</p>
+
+      <p>Now she's gone. What remains: the ghosts of Princess, the first husband, his g-d, the boy who threw the braces in the creek — and stories no one tells, held by people who won't say why they're crying.</p>
+
+      <p>The road is still there. Half an acre. Same ground she pulled from. cold.</p>
+
+      <p class="tail">but i still smell the wood smoke, it stays in your hair</p>
+
+      <p class="tail">long after the dream ends.</p>
+
+      <p class="tail">and long after you think you're done.</p>
+
+    </div>
+
+    <div class="colophon">
+      <div class="name">Jack Stallings</div>
+      <div>Taste &amp; See Jack &middot; June 10, 2026</div>
+      <div>jackstallings.com/maiden-mary</div>
+    </div>
+
+    <div class="subscribe-nudge">
+      <p>More dispatches from the concrete hearth.<br>Free. No algorithms. No noise.</p>
+      <a href="https://knowjack.substack.com/subscribe" class="btn" target="_blank" rel="noopener noreferrer">Pull Up a Chair &rarr;</a>
+    </div>
+
+  </div>
 
 </body>
 </html>

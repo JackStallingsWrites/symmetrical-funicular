@@ -1,263 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Doxology, Pt. One — Jack Stallings</title>
-  <meta name="description" content="Thanksgiving as a covered dish nobody opens. On grief that won't be trimmed into a happy shape, and the inheritance you don't get to refuse." />
-  <meta property="og:title" content="Doxology, Pt. One" />
-  <meta property="og:description" content="On grief that won't be trimmed into a happy shape, and the inheritance you don't get to refuse. — Jack Stallings" />
-  <meta property="og:url" content="https://jackstallings.com/doxology" />
-  <link rel="canonical" href="https://jackstallings.com/doxology" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A grief poem in movements — Thanksgiving, red clay, and the inheritance nobody gets to refuse.">
+  <meta property="og:title" content="Doxology — Jack Stallings">
+  <meta property="og:description" content="A grief poem in movements — Thanksgiving, red clay, and the inheritance nobody gets to refuse.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jackstallings.com/doxology/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Doxology — Jack Stallings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Page-specific reading styles — extends /style.css brand tokens */
-    body { padding-top: 0; }
-    .piece-hero {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: calc(5.5rem + var(--gutter)) var(--gutter) 2.5rem;
-      text-align: center;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #1C1C1C;
+      --bone:       #F5F0E8;
+      --bone-dim:   rgba(245, 240, 232, 0.62);
+      --bone-faint: rgba(245, 240, 232, 0.10);
+      --oxblood:    #7A1E1E;
+      --oxblood-light:#A33A35;
+      --rule:       rgba(245, 240, 232, 0.12);
+      --serif:      'EB Garamond', 'Georgia', serif;
+      --sans:       'Inter', system-ui, sans-serif;
     }
-    .piece-eyebrow {
-      display: block;
-      font-family: var(--sans);
-      font-size: 0.6875rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.85;
-      margin-bottom: 1.5rem;
-    }
-    .piece-title {
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--bone);
       font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(2.4rem, 7vw, 4.4rem);
-      line-height: 1.05;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--oxblood); color: var(--bone); }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem clamp(1.25rem, 5vw, 3rem);
+      background: rgba(28, 28, 28, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bone-faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--oxblood);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-link {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--bone-dim);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--bone); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--bone);
+      background: var(--oxblood);
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--oxblood-light); }
+
+    /* ── Page ── */
+    .page {
+      max-width: 34rem;
+      margin: 0 auto;
+      padding: 7rem clamp(1.25rem, 6vw, 2rem) 5rem;
+    }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.64rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 1.4rem;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: clamp(2rem, 7vw, 2.9rem);
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .sub {
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--bone-dim);
+      line-height: 1.65;
+      margin-bottom: 0.3rem;
+    }
+
+    .masthead-rule {
+      border: 0;
+      height: 1px;
+      background: var(--rule);
+      margin: 2.6rem 0 2.8rem;
+    }
+
+    /* ── Movement label ── */
+    .movement {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+      margin-bottom: 1.5rem;
+      margin-top: 3rem;
+    }
+    .movement:first-of-type {
+      margin-top: 0;
+    }
+
+    /* ── Poem body ── */
+    .stanza {
+      margin-bottom: 1.85rem;
+      font-size: 1.18rem;
+      line-height: 1.62;
+    }
+    .stanza p { margin: 0; }
+    .stanza em { font-style: italic; color: var(--bone-dim); }
+
+    .refrain {
+      font-style: italic;
+      font-size: 1.22rem;
+      line-height: 1.5;
+      margin: 2.4rem 0;
+      padding-left: 1.1rem;
+      border-left: 2px solid var(--oxblood);
       color: var(--bone);
     }
-    .piece-sub {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+
+    /* ── Continue reading ── */
+    .continue-reading {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.8rem;
       color: var(--bone-dim);
-      margin-top: 1.25rem;
-      line-height: 1.7;
     }
+    .continue-reading a {
+      color: var(--oxblood-light);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .continue-reading a:hover { color: var(--bone); }
 
-    .cover { max-width: 320px; margin: 0.5rem auto 0; padding: 0 var(--gutter); }
-    .cover img { width: 100%; display: block; border: 1px solid var(--bone-faint); }
+    /* ── Colophon ── */
+    .colophon {
+      margin-top: 3.4rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.13em;
+      line-height: 1.9;
+      text-transform: uppercase;
+      color: var(--bone-faint);
+    }
+    .colophon .name { color: var(--bone-dim); }
 
-    .content-warning {
-      max-width: 640px; margin: 2rem auto 0; padding: 1rem 1.5rem;
-      border: 1px solid var(--bone-faint); background: var(--bone-subtle);
+    /* ── Subscribe nudge ── */
+    .subscribe-nudge {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      border: 1px solid var(--bone-faint);
+      border-radius: 2px;
       text-align: center;
     }
-    .content-warning p {
-      font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.04em;
-      color: var(--bone-dim); opacity: 0.75; line-height: 1.7;
+    .subscribe-nudge p {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--bone-dim);
+      line-height: 1.7;
+      margin-bottom: 1rem;
     }
-
-    .film { max-width: 880px; margin: 0 auto; padding: 1.5rem var(--gutter) 2rem; }
-    mux-player {
-      width: 100%; aspect-ratio: 16/9; display: block; overflow: hidden;
-      border: 1px solid var(--bone-faint);
-      --media-background-color: var(--ink);
-      --media-object-fit: cover;
-      --controls-backdrop-color: rgba(28,28,28,0.55);
-      --media-control-background: transparent;
-      --media-control-hover-background: rgba(245,240,232,0.10);
-      --media-primary-color: var(--bone);
-      --media-secondary-color: var(--bone);
-      --media-accent-color: var(--gold);
-      --title-display: none;
-      --airplay-button-display: none;
-      --cast-button-display: none;
-      --pip-button-display: none;
-      --playback-rate-button-display: none;
+    .btn {
+      display: inline-block;
+      background: var(--oxblood);
+      color: var(--bone);
+      padding: 0.75rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
     }
-    .film-caption {
-      font-family: var(--serif); font-style: italic; font-size: 1rem;
-      color: var(--bone-dim); opacity: 0.7; text-align: center;
-      margin-top: 1.75rem; line-height: 1.9;
-    }
+    .btn:hover { background: var(--oxblood-light); }
 
-    .piece { max-width: 640px; margin: 0 auto; padding: 1rem var(--gutter) 4rem; border-top: 1px solid var(--bone-faint); }
-
-    .movement { text-align: center; margin: 4rem 0 2rem; opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-    .movement:first-child { margin-top: 2.5rem; }
-    .movement.visible { opacity: 1; transform: none; }
-    .mv-num { display: block; font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.3em; color: var(--gold); opacity: 0.8; margin-bottom: 0.85rem; }
-    .mv-name { font-family: var(--serif); font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 400; font-style: italic; color: var(--bone); letter-spacing: 0.02em; line-height: 1; }
-    .mv-date { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); opacity: 0.6; margin-top: 0.9rem; }
-
-    .stanza { margin: 0 auto 2.2rem; max-width: 34rem; opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-    .stanza.visible { opacity: 1; transform: none; }
-    .stanza p { font-size: 1.05rem; line-height: 1.8; color: var(--bone); opacity: 0.92; margin-bottom: 1rem; }
-    .stanza p:last-child { margin-bottom: 0; }
-    .stanza em { font-style: italic; color: var(--bone-dim); }
-    .stanza .cap { font-family: var(--serif); font-size: 3.2rem; line-height: 0.7; float: left; margin: 0.3rem 0.5rem 0 0; color: var(--gold); font-weight: 500; }
-
-    .thesis { text-align: center; margin: 3.2rem 0; opacity: 0; transform: translateY(16px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
-    .thesis:first-child { margin-top: 2rem; }
-    .thesis.visible { opacity: 1; transform: none; }
-    .th-num { display: block; font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 0.85rem; }
-    .thesis p { font-size: 1.02rem; line-height: 1.75; color: var(--bone); opacity: 0.92; margin-bottom: 0.85rem; }
-    .thesis p:last-child { margin-bottom: 0; }
-
-    .end { max-width: 640px; margin: 0 auto; padding: 3.5rem var(--gutter); border-top: 1px solid var(--bone-faint); text-align: center; }
-    .end-mark { font-family: var(--serif); font-style: italic; font-size: 1.5rem; color: var(--gold); opacity: 0.85; margin-bottom: 1.75rem; }
-    .end p { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--bone-dim); margin-bottom: 1.5rem; }
-    .end a { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); border-bottom: 1px solid var(--gold); padding-bottom: 0.18rem; transition: color 0.2s; }
-    .end a:hover { color: var(--gold); }
-
-    .footer-inner--slim { grid-template-columns: 1fr 1fr; max-width: 640px; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .movement, .stanza, .thesis, .film { opacity: 1; transform: none; transition: none; }
+    @media (max-width: 600px) {
+      .nav-link { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="nav scrolled" id="nav" aria-label="Site navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Taste &amp; See Jack — Home">TSJ</a>
-      <div class="nav-links">
-        <a href="/#read" class="nav-anchor">Read</a>
-        <a href="/#hear" class="nav-anchor">Listen</a>
-        <a href="/#confess" class="nav-anchor">Confess</a>
-      </div>
+  <nav class="nav">
+    <a href="/" class="nav-logo">TSJ</a>
+    <div class="nav-links">
+      <a href="/#about" class="nav-link">Writing</a>
+      <a href="/listen/" class="nav-link">Listen</a>
+      <a href="/confess/" class="nav-link">Confess</a>
+      <a href="https://knowjack.substack.com/subscribe" class="nav-cta" target="_blank" rel="noopener noreferrer">Subscribe</a>
     </div>
   </nav>
 
-<header class="piece-hero">
-  <span class="piece-eyebrow">Jack Stallings · A series in parts</span>
-  <h1 class="piece-title">Doxology</h1>
-  <p class="piece-sub">part one · in Red Wilkes clay</p>
-</header>
+  <div class="page">
 
-<main class="piece">
+    <p class="eyebrow">Taste &amp; See Jack &middot; Poem</p>
+    <h1>Doxology</h1>
+    <p class="sub">A grief poem in movements &mdash; Thanksgiving, red clay, and the inheritance nobody gets to refuse.</p>
 
-  <div class="movement" data-mv="1">
-    <span class="mv-num">I</span>
-    <h2 class="mv-name">The Table</h2>
-  </div>
+    <hr class="masthead-rule">
 
-  <div class="stanza">
-    <p><span class="cap">T</span>hanksgiving—<br>
-    a word folks set on the table<br>
-    like a covered dish,<br>
-    and my tongue keeps finding pennies.</p>
-  </div>
+    <p class="movement">I.</p>
 
-  <div class="stanza">
-    <p>When my granddad died before dinner time—<br>
-    like mashed taters sliding off the spoon—<br>
-    we tried to patch the hole<br>
-    with construction paper.</p>
-  </div>
+    <div class="stanza"><p>Thanksgiving&mdash;<br>
+    Up on the Appalachian slope<br>
+    Just two deer</p></div>
 
-  <div class="stanza">
-    <p>Handprint turkeys.<br>
-    Little palms in orange paint,<br>
-    feathers glued on crooked,<br>
-    Elmer's dripped smiles on carpet—<br>
-    while scissors flew to chew the edge.<br>
-    While relatives muttered, <em>how cute.</em></p>
-  </div>
-
-  <div class="stanza">
-    <p>Like glue could hold a family in place.<br>
-    Like grief can be trimmed<br>
-    into a happy fun shape.</p>
-  </div>
-
-  <div class="stanza">
-    <p>Yet the river kept running—<br>
-    red-brown,<br>
-    carrying the names<br>
-    we don't say anymore.</p>
-  </div>
-
-  <div class="movement" data-mv="2">
-    <span class="mv-num">II</span>
-    <h2 class="mv-name">The Hill</h2>
-  </div>
-
-  <div class="stanza">
-    <p><span class="cap">U</span>p on the Appalachian slope<br>
-    a house glowed through bare branches,<br>
-    porchlight calling moths—<br>
-    and the closer we got<br>
-    the more it pushed.</p>
-  </div>
-
-  <div class="stanza">
-    <p>Magnetic hill makes the body screech,<br>
-    lugnuts release; sparks panic,<br>
-    like you're not welcome.</p>
-  </div>
-
-  <div class="stanza">
-    <p>Scraping sting from the perspective of<br>
-    a goat, uninvited by his mother—<br>
-    on the holidays, déjà-vu, all over.</p>
-  </div>
-
-  <div class="movement" data-mv="3">
-    <span class="mv-num">III</span>
-    <h2 class="mv-name">The Deer</h2>
-  </div>
-
-  <div class="stanza">
-    <p><span class="cap">J</span>ust two deer<br>
-    staring at headlights,<br>
-    tryin' to make sense of the night.<br>
-    The bloody coincidence in Inheritance.</p>
-  </div>
-
-</main>
-
-<section class="end">
-  <p class="end-mark">∴</p>
-  <p>Doxology continues in Pt. Two.</p>
-  <a href="https://knowjack.substack.com/p/doxology-pt-one" target="_blank" rel="noopener noreferrer">Read on Substack →</a>
-</section>
-
-  <footer class="footer" id="footer">
-    <div class="footer-rule" aria-hidden="true"></div>
-    <div class="footer-inner footer-inner--slim">
-      <div class="footer-brand fade-in">
-        <p class="footer-logo">TSJ</p>
-        <p class="footer-tagline">Taste &amp; See Jack</p>
-        <p class="footer-copy">© 2026 Jack Stallings. All rights reserved.</p>
-      </div>
-      <div class="footer-links fade-in">
-        <h3 class="footer-section-title">Find Jack</h3>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="/#about">About</a>
-          <a href="https://knowjack.substack.com" target="_blank" rel="noopener noreferrer">Newsletter</a>
-          <a href="/#doors">The Three Rooms</a>
-        </nav>
-      </div>
+    <div class="continue-reading">
+      &mdash; <a href="https://knowjack.substack.com/p/doxology?r=3895d8" target="_blank" rel="noopener noreferrer">continue reading on Substack &rarr;</a>
     </div>
-    <div class="footer-bottom">
-      <p>Built to outlast the quiet. The table is still set.</p>
-    </div>
-  </footer>
 
-<script>
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target);} });
-  },{threshold:0.12});
-  document.querySelectorAll('.movement,.stanza').forEach(el=>obs.observe(el));
-</script>
+    <div class="colophon">
+      <div class="name">Jack Stallings</div>
+      <div>Taste &amp; See Jack</div>
+      <div>jackstallings.com/doxology</div>
+    </div>
+
+    <div class="subscribe-nudge">
+      <p>More dispatches from the concrete hearth.<br>Free. No algorithms. No noise.</p>
+      <a href="https://knowjack.substack.com/subscribe" class="btn" target="_blank" rel="noopener noreferrer">Pull Up a Chair &rarr;</a>
+    </div>
+
+  </div>
 
 </body>
 </html>

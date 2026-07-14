@@ -255,7 +255,7 @@ body {
 
 .nav-cta {
   background: var(--oxblood);
-  color: var(--ink);
+  color: var(--bone);
   padding: 0.5rem 1.375rem;
   border-radius: var(--radius);
   font-size: 0.75rem;
@@ -302,7 +302,7 @@ body {
   pointer-events: none;
 }
 
-/* Hairline gold rule at top */
+/* Hairline oxblood rule at top */
 .hero::after {
   content: '';
   position: absolute;
