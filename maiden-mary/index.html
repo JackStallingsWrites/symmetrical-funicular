@@ -8,14 +8,12 @@
   <meta property="og:description" content="A short film and poem for the women who stayed small and grew everything.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://jackstallings.com/maiden-mary/">
-  <meta property="og:image" content="https://image.mux.com/X01DkqGRM8aF007ygHWFEju500X5kqanAXYpg6ONTowhdI/thumbnail.jpg?width=1200&height=630&fit_mode=smartcrop&time=3">
+  <meta property="og:image" content="https://jackstallings.com/og-image.png">
   <link rel="icon" type="image/png" href="/favicon.png">
   <title>Maiden Mary: Four-Foot Something — Jack Stallings</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Mux Player web component — no build step required -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@mux/mux-player@3/+esm"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -133,31 +131,26 @@
       margin: 2.5rem 0 2.8rem;
     }
 
-    /* ── Mux player ── */
+    /* ── Film embed ── */
     .player-wrap {
       margin-bottom: 3.5rem;
     }
 
-    mux-player {
-      aspect-ratio: 3 / 2;
+    .film-embed {
+      position: relative;
       width: 100%;
-      display: block;
+      aspect-ratio: 16 / 9;
       border-radius: 2px;
       overflow: hidden;
+      background: #0E0E10;
+    }
 
-      --media-background-color: #0E0E10;
-      --media-object-fit: cover;
-      --controls-backdrop-color: rgba(14, 14, 16, 0.55);
-      --media-control-background: transparent;
-      --media-control-hover-background: rgba(242, 238, 232, 0.08);
-      --media-primary-color: #F2EEE8;
-      --media-secondary-color: #F2EEE8;
-      --media-accent-color: #4B0F14;
-      --title-display: none;
-      --airplay-button-display: none;
-      --cast-button-display: none;
-      --pip-button-display: none;
-      --playback-rate-button-display: none;
+    .film-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     /* ── Poem ── */
@@ -263,13 +256,13 @@
     <hr class="masthead-rule">
 
     <div class="player-wrap">
-      <mux-player
-        playback-id="X01DkqGRM8aF007ygHWFEju500X5kqanAXYpg6ONTowhdI"
-        poster="https://image.mux.com/X01DkqGRM8aF007ygHWFEju500X5kqanAXYpg6ONTowhdI/thumbnail.jpg?time=3"
-        preload="metadata"
-        metadata-video-title="Maiden Mary: Four-Foot Something"
-        metadata-viewer-user-id="anonymous"
-      ></mux-player>
+      <div class="film-embed">
+        <iframe
+          src="https://share.descript.com/embed/jg4KVSJm46e"
+          allowfullscreen
+          title="Maiden Mary: Four-Foot Something"
+        ></iframe>
+      </div>
     </div>
 
     <div class="poem">
