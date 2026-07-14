@@ -15,8 +15,8 @@
     X-XSS-Protection           = "1; mode=block"
     Referrer-Policy            = "strict-origin-when-cross-origin"
     Permissions-Policy         = "camera=(), microphone=(), geolocation=()"
-    # Allow: self, Google Fonts, rss2json API, Substack images
-    Content-Security-Policy    = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://api.rss2json.com; img-src * data:; media-src https://substack-post-media.s3.amazonaws.com https://substackcdn.com; frame-ancestors 'none'"
+    # Allow: self, Google Fonts, rss2json API, Substack images, Mux video
+    Content-Security-Policy    = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://api.rss2json.com https://stream.mux.com https://inferred.litix.io; img-src * data:; media-src https://substack-post-media.s3.amazonaws.com https://substackcdn.com https://stream.mux.com blob:; frame-ancestors 'none'"
 
 # ─── Cache static assets ─────────────────────────────────────────
 [[headers]]
