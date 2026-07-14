@@ -1,8 +1,8 @@
 /* ═══════════════════════════════════════════════════════════════
    TASTE & SEE JACK — jackstallings.com
    Brand Law:
-     Global Ink  #1C1C1C   Global Bone #F5F0E8
-     Velvet Dusk: Indigo #3D2B6B + Honey Gold #C9952A  (Read)
+     Global Ink  #1C1C1C   Global Bone #F5F0E8   Oxblood #7A1E1E
+     Read — Oxblood Dusk: Indigo #3D2B6B (Read)
      Terracotta  #C0613A + Sage Moss #6B7C5C            (Hear)
      Midnight Sapphire #1A2A4A + Oxblood #7A1E1E       (Confess)
    ═══════════════════════════════════════════════════════════════ */
@@ -23,9 +23,9 @@
   --bone-faint: rgba(245, 240, 232, 0.10);
   --bone-subtle:rgba(245, 240, 232, 0.04);
 
-  /* Read — Velvet Dusk */
+  /* Read — Oxblood Dusk */
   --indigo:      #3D2B6B;
-  --gold:        #C9952A;
+  --read-accent: var(--oxblood);
 
   /* Hear — The Porch */
   --terracotta:  #C0613A;
