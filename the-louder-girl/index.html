@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Louder Girl — Jack Stallings</title>
+<meta name="description" content="A dying chorus teacher hands a hidden girl a solo. When the benefit becomes a memorial, the girl has to sing anyway. Short fiction from Catawba County.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Louder Girl — Jack Stallings">
+<meta property="og:description" content="A dying chorus teacher hands a hidden girl a solo. When the benefit becomes a memorial, the girl has to sing anyway. Short fiction from Catawba County.">
+<meta property="og:image" content="https://jackstallings.com/the-louder-girl/cover.png">
+<meta property="og:url" content="https://jackstallings.com/the-louder-girl/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="An aged paper poster taped to a painted cinder-block wall reads: A Night of Song for Mrs. Ledwell — Fund Her Fight. The bottom corner curls away from the wall.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14110f;
+    --ink-2:#1c1815;
+    --bone:#e6dfd2;
+    --bone-dim:#a39a8c;
+    --graphite:#3a342e;
+    --blood:#8f2b2b;
+    --blood-bright:#b13a35;
+    --mono:'IBM Plex Mono',monospace;
+    --serif:'Spectral',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:var(--serif);
+    font-weight:300;
+    font-size:19px;
+    line-height:1.72;
+  }
+  ::selection{background:var(--blood);color:var(--bone)}
+
+  .page{max-width:34em;margin:0 auto;padding:0 22px 120px}
+
+  /* ---------- masthead ---------- */
+  header{padding:64px 0 0;text-align:left}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--bone-dim);
+  }
+  .eyebrow a{color:inherit;text-decoration:none}
+  h1{
+    font-weight:400;font-style:italic;
+    font-size:clamp(34px,7vw,52px);
+    letter-spacing:.005em;line-height:1.08;
+    margin:22px 0 0;
+  }
+  .rule{
+    height:1px;background:var(--graphite);
+    margin:36px 0 0;position:relative;
+  }
+  .rule::after{
+    content:'';position:absolute;left:0;top:0;height:1px;width:56px;background:var(--blood-bright);
+  }
+  .byline{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--bone-dim);
+    margin-top:14px;display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .byline .fic{color:var(--blood-bright)}
+
+  /* ---------- story ---------- */
+  article{margin-top:64px}
+  article p{margin:0 0 1.15em}
+  article p:last-child{margin-bottom:0}
+  em{font-style:italic}
+
+  /* pencil marginalia */
+  .pencil{
+    font-style:italic;color:var(--bone);
+    letter-spacing:.02em;
+  }
+
+  /* card stock — the poster register */
+  .poster{
+    font-family:var(--mono);font-weight:500;font-style:normal;
+    font-size:.78em;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--bone);
+  }
+  .poster.blood{color:var(--blood-bright)}
+  p.poster-line{margin:1.5em 0}
+
+  /* intercom register */
+  .intercom{color:var(--bone-dim)}
+
+  /* ---------- ekg section break ---------- */
+  .beat{
+    margin:64px auto;display:flex;justify-content:center;
+  }
+  .beat svg{width:120px;height:28px;display:block}
+  .beat path{fill:none;stroke:var(--graphite);stroke-width:1.5}
+  .beat path.spike{stroke:var(--blood);stroke-width:1.5}
+
+  /* ---------- end mark ---------- */
+  .endmark{margin:80px auto 0;display:flex;flex-direction:column;align-items:center;gap:26px}
+  .endmark svg{width:180px;height:28px;display:block}
+  .endmark path{fill:none;stroke:var(--graphite);stroke-width:1.5}
+  .endmark path.flick{stroke:var(--blood-bright);stroke-width:1.5}
+  .colophon{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--bone-dim);text-align:center;
+  }
+
+  @media(max-width:520px){
+    body{font-size:17.5px}
+    header{padding-top:44px}
+    article{margin-top:48px}
+    .beat{margin:48px auto}
+  }
+  @media print{
+    body{background:#fff;color:#111}
+    .rule::after{background:#8f2b2b}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <p class="eyebrow"><a href="/">Jack Stallings &middot; Taste &amp; See</a></p>
+  <h1>The Louder Girl</h1>
+  <div class="rule"></div>
+  <p class="byline"><span class="fic">Fiction</span><span>Catawba County</span></p>
+</header>
+
+<article>
+
+<p>The F above middle C had stuck since before anybody in the room was born, and Mrs.&nbsp;Ledwell played around it without looking, an old pothole on her own road.</p>
+
+<p>Fifth period. She worked the altos on one chord until the seams closed and forty voices went down into one animal, and Erin stood in the middle of it where she lived.</p>
+
+<p>Blend was the whole religion in that room.</p>
+
+<p><em>Nobody&rsquo;s a hero in a chorus.</em></p>
+
+<p><em>If I can hear you, I can find you.</em></p>
+
+<p>Mrs.&nbsp;Ledwell said these things like scripture, and Erin loved her for it&mdash;the one adult whose rules happened to be a shelter. In chorus, a person could disappear without leaving. Erin had spent four years perfecting that disappearance. She knew exactly how much of herself to give the room and exactly how much to keep.</p>
+
+<p>There was a benefit on the marquee.</p>
+
+<p>Mrs.&nbsp;Ledwell had come back in January with an inch of hair under a ball cap the dress code had quit applying to, and a left hand that sometimes landed beside the note it meant to touch. Nobody talked about it in front of her. The county was raising money the way it did for a wreck or a house fire&mdash;through casseroles, raffles, folded bills, and language broad enough to stand inside without naming the thing.</p>
+
+<p>They called it a fight.</p>
+
+<p>They called her brave.</p>
+
+<p>They called it anything but dying.</p>
+
+<p>Erin had been careful not to decide which word was true.</p>
+
+<p>Mrs.&nbsp;Ledwell cut the chord off with her fist.</p>
+
+<p>&ldquo;Friday. Program order.&rdquo;</p>
+
+<p>She read from a yellow legal pad. Two chorus numbers, the middle-school band, a quartet from Mountain View Baptist.</p>
+
+<p>Then she said, &ldquo;Erin. Come get this.&rdquo;</p>
+
+<p>Forty heads turned.</p>
+
+<p>Erin knew the turn. It had been finding her since kindergarten&mdash;the half second where the county ran its quiet arithmetic on her face and carried the one. She had built her whole life in this room to be exempt, and Mrs.&nbsp;Ledwell had just spent that exemption with two words.</p>
+
+<p>She went down the risers.</p>
+
+<p>The sheet music was already out of the folder, waiting on the piano. Her name was penciled across the top.</p>
+
+<p>Never a question.</p>
+
+<p>&ldquo;I don&rsquo;t&mdash;&rdquo; Erin said.</p>
+
+<p>&ldquo;I know,&rdquo; Mrs.&nbsp;Ledwell said.</p>
+
+<p>It could have meant <em>I know you&rsquo;re nervous.</em></p>
+
+<p>It could have meant <em>I know what they see when they look at you.</em></p>
+
+<p>It could have meant <em>I know you have been hiding from me too.</em></p>
+
+<p>Mrs.&nbsp;Ledwell set her left hand flat on the piano lid, as if to quiet it. Then she sang the opening line.</p>
+
+<p>Full, and low, and plain, with everything scraped off it that a voice puts on to be liked.</p>
+
+<p>The room quit.</p>
+
+<p>Erin had heard Mrs.&nbsp;Ledwell sing before&mdash;scales, demonstrations, jokes in the hallway&mdash;but not like this. The voice came out of her body carrying damage and no apology for it. For one second Erin could hear the illness inside the sound, not as weakness but as a room the song had passed through.</p>
+
+<p>&ldquo;You&rsquo;ll want to hide in it Friday,&rdquo; Mrs.&nbsp;Ledwell said, only to her. &ldquo;Everybody&rsquo;s scared of a microphone the first time. That&rsquo;s all that is.&rdquo;</p>
+
+<p>She tapped the pages.</p>
+
+<p>&ldquo;I&rsquo;ll bet you a Bojangles&rsquo; biscuit you sing it full. Sausage. My treat.&rdquo;</p>
+
+<p>Scared was the wrong word.</p>
+
+<p>Erin knew it the way you know your own name said wrong.</p>
+
+<p>She was not afraid of the microphone. She was afraid of being correctly heard. She was afraid the county would take whatever came out of her and make it mean something she had not given permission for it to mean.</p>
+
+<p>And beneath that was another fear, small and mean and impossible to confess: that Mrs.&nbsp;Ledwell would die before Friday and leave Erin holding the song.</p>
+
+<p>The thought arrived whole.</p>
+
+<p>Erin hated herself for having it.</p>
+
+<p>The woman holding out the pages was wrong about her in the exact moment of choosing her. Erin wanted to correct her. She wanted to refuse. She wanted to ask whether the benefit was a promise or a goodbye.</p>
+
+<p>Instead, she took the wrong word because it came with the sheet music.</p>
+
+<p>&ldquo;Don&rsquo;t let them flatten you,&rdquo; Mrs.&nbsp;Ledwell said, turning back to the room.</p>
+
+<p>The chord started behind Erin, forty voices closing over the hole she had left.</p>
+
+<p>She looked down at her name at the top of the page, written in a hand that had begun to slant.</p>
+
+<p>For the first time, she wondered how much pain it had cost Mrs.&nbsp;Ledwell to write it.</p>
+
+<div class="beat" aria-hidden="true"><svg viewBox="0 0 120 28"><path d="M0 14 H44"/><path class="spike" d="M44 14 L52 14 L57 4 L63 22 L67 14 L76 14"/><path d="M76 14 H120"/></svg></div>
+
+<p>The driveway was the only room Erin owned.</p>
+
+<p>Her mama&rsquo;s Corolla sat nose-to-carport, engine off, the cooling metal ticking beneath her. The sheet music rode the passenger seat the way a person would. Erin had not looked at it since Tuesday and had not stopped looking at it since Tuesday.</p>
+
+<p>Eleven plays.</p>
+
+<p>She counted things.</p>
+
+<p>Every time, she sang half a beat behind the recorded voice, borrowing its certainty. Present and unfindable&mdash;the best trick she knew, built herself the way you build anything you cannot afford to buy.</p>
+
+<p>The plan for the solo was the same plan she used for everything else.</p>
+
+<p>Sing it small.</p>
+
+<p>Give them the shape.</p>
+
+<p>Keep the rest.</p>
+
+<p>She started that way from memory. The song had been playing in some room of her life since before she could reach the counter, usually from her granddaddy&rsquo;s truck radio, where all old songs sounded like they had already survived something.</p>
+
+<p>Her voice went pretty.</p>
+
+<p>Went smooth.</p>
+
+<p>Sat down in the back pew of itself.</p>
+
+<p>She stopped the track.</p>
+
+<p>Mrs.&nbsp;Ledwell hated pretty when pretty was hiding.</p>
+
+<p>Again.</p>
+
+<p>Erin came in even softer.</p>
+
+<p>But you could not sing this song at a whisper without the whisper turning around and looking at you. Its quiet was a fist not yet a fist. Hers was a coat. Hers was a locked car in a driveway.</p>
+
+<p>Third time through, the words got in.</p>
+
+<p>A thousand plays, and Erin had never once heard them.</p>
+
+<p>Waiting.</p>
+
+<p>Lines.</p>
+
+<p>People standing in lines.</p>
+
+<p>Her body knew lines.</p>
+
+<p>Nine years old at the county building with her grandmother, papers held against her chest. The plastic chair pinching the backs of her legs. A television bolted high in a corner with the sound turned off. Her grandmother saying, <em>Don&rsquo;t give them a reason,</em> though nobody had explained what reason or what they might give.</p>
+
+<p>Erin had learned that the trick to a line was to make your face a closed door and keep it closed.</p>
+
+<p>She had been so good at it.</p>
+
+<p>She still was.</p>
+
+<p>The song knew.</p>
+
+<p>She stopped the recording and sat in the sudden quiet. A mockingbird worked through several borrowed voices in the pecan tree. Somewhere inside the house, her mama dropped a pan into the sink.</p>
+
+<p>Erin looked at Mrs.&nbsp;Ledwell&rsquo;s handwriting.</p>
+
+<p>The song had been marked in pencil. <em>Breathe here. Don&rsquo;t rush. Open vowel.</em> On the last page, beside the final refrain, Mrs.&nbsp;Ledwell had written:</p>
+
+<p class="pencil">Tell it true.</p>
+
+<p>Erin rubbed her thumb across the words.</p>
+
+<p>Some graphite came off on her skin.</p>
+
+<p>That was the first thing that frightened her enough to cry.</p>
+
+<p>Not the hospital rumors. Not the ball cap. Not the hand missing notes.</p>
+
+<p>The pencil.</p>
+
+<p>The fact that a person could touch paper and leave less of herself there than before.</p>
+
+<p>Erin pressed her thumb harder, trying to put the gray back.</p>
+
+<p>Then she took a breath from the floor of herself and let one line out at true volume.</p>
+
+<p>The car could not hold it.</p>
+
+<p>The sound hit the windshield and came back into her chest, hers returning to her, too large and exactly the right size. Her eyes went hot.</p>
+
+<p>She sang another line.</p>
+
+<p>Then another.</p>
+
+<p>By the end of the verse, she was angry.</p>
+
+<p>Angry at Mrs.&nbsp;Ledwell for hearing her.</p>
+
+<p>Angry at the county for making dying into an event with a cash box.</p>
+
+<p>Angry at the song for knowing anything.</p>
+
+<p>Most of all, angry that somewhere beneath every note was the thought she would not let herself say:</p>
+
+<p><em>Do not leave me with this.</em></p>
+
+<p>She started over from the top.</p>
+
+<p>Just her own voice coming up from under, in a parked car in Catawba County&mdash;quiet at first, the way it asks.</p>
+
+<div class="beat" aria-hidden="true"><svg viewBox="0 0 120 28"><path d="M0 14 H44"/><path class="spike" d="M44 14 L52 14 L57 4 L63 22 L67 14 L76 14"/><path d="M76 14 H120"/></svg></div>
+
+<p>The announcements came on at 8:04, the way they came on at 8:04.</p>
+
+<p>Pledge first.</p>
+
+<p>Then the assistant principal, who read everything in the same key&mdash;picture money, bus changes, chicken fajitas Thursday.</p>
+
+<p>Third item.</p>
+
+<p class="intercom">&ldquo;It is with heavy hearts that we share the passing of Mrs.&nbsp;Lori Ledwell after a courageous battle with cancer. Our thoughts are with her family.&rdquo;</p>
+
+<p>Erin waited for the sentence to change.</p>
+
+<p>For someone to say there had been a mistake. For the assistant principal to clear his throat and read the correct announcement. For Mrs.&nbsp;Ledwell to appear in the chorus-room doorway irritated by the whole production, ball cap crooked, saying, <em>Again from measure twelve.</em></p>
+
+<p>Fourth item.</p>
+
+<p class="intercom">&ldquo;JV softball at Bandys. Bus departs at three-thirty.&rdquo;</p>
+
+<p>The hallway filled as if nothing had happened.</p>
+
+<p>By the trophy case, chorus girls held on to each other, making the sound you make. Teachers stood in doorways with their arms crossed low, the way men stand at a wreck.</p>
+
+<p>Erin&rsquo;s body walked past all of it.</p>
+
+<p>Her face did what her face did.</p>
+
+<p>Closed like a door.</p>
+
+<p>She had not asked it to close.</p>
+
+<p>Nine years old in a plastic chair, she had built that door with her own hands, and it worked, and it worked.</p>
+
+<p>She had never once wanted to be worse at something.</p>
+
+<p>A girl from the soprano section touched her elbow.</p>
+
+<p>&ldquo;Are you okay?&rdquo;</p>
+
+<p>Erin almost laughed.</p>
+
+<p>The question was so small and clean. It wanted an answer shaped like yes or no.</p>
+
+<p>She nodded because nodding was not lying exactly.</p>
+
+<p>The girl hugged her anyway. Erin held her arms straight at her sides until the girl let go.</p>
+
+<p>The posters were still up in the front lobby.</p>
+
+<p>Card stock, taped to the cinder block.</p>
+
+<p class="poster poster-line">A Night of Song for Mrs.&nbsp;Ledwell.</p>
+
+<p>Friday, seven o&rsquo;clock. The gymnasium. Five dollars at the door.</p>
+
+<p>Across the bottom, in the biggest letters the page allowed:</p>
+
+<p class="poster blood poster-line">Fund Her Fight.</p>
+
+<p>The photograph showed Mrs.&nbsp;Ledwell at the upright, caught mid-phrase, one hand lifted from the keys like she was pulling something out of the floor.</p>
+
+<p>Nobody had taken the posters down.</p>
+
+<p>There was a lady you called about the marquee and a man you called about the scoreboard and no one you called about this.</p>
+
+<p>The paper had not heard.</p>
+
+<p>One corner had curled away from the wall, the tape gone gray.</p>
+
+<p>Erin pressed it flat with her thumb.</p>
+
+<p>She held it there until the glue took.</p>
+
+<p>Then she noticed a small crescent of pencil still beneath her thumbnail.</p>
+
+<p>Mrs.&nbsp;Ledwell&rsquo;s pencil.</p>
+
+<p class="pencil">Tell it true.</p>
+
+<p>Erin dug at the graphite with the nail of her other hand until the skin went red.</p>
+
+<p>The bell went off above her.</p>
+
+<p>She went where the building told her to go.</p>
+
+<div class="beat" aria-hidden="true"><svg viewBox="0 0 120 28"><path d="M0 14 H44"/><path class="spike" d="M44 14 L52 14 L57 4 L63 22 L67 14 L76 14"/><path d="M76 14 H120"/></svg></div>
+
+<p>They held the benefit in the gym because the auditorium sat two-fifty, and by Wednesday the whole county was coming.</p>
+
+<p>Nobody called it a benefit anymore, but nobody called it a funeral either.</p>
+
+<p>The school had printed a new line beneath the old program title:</p>
+
+<p class="poster poster-line">In Loving Memory.</p>
+
+<p>Still, the poster stood beside the entrance.</p>
+
+<p class="poster blood poster-line">Fund Her Fight.</p>
+
+<p>Nobody had changed it&mdash;nobody whose job it was, or nobody who could stand to be the one.</p>
+
+<p>Folding chairs covered the game floor. A cash box sat on a card table because money had already been collected and grief did not know how to issue refunds.</p>
+
+<p>Four hundred people.</p>
+
+<p>Mrs.&nbsp;Ledwell&rsquo;s husband sat down front, a big man holding his own hands as though they belonged to someone he had been asked to keep safe.</p>
+
+<p>Fourth row, a boy in a clip-on tie. Six years old. Church shoes hanging six inches off the floor.</p>
+
+<p>Erin knew all of it the way you know the water is cold.</p>
+
+<p>She did not let herself look twice.</p>
+
+<p>The chorus went first, two numbers with a substitute teacher who counted too visibly. The altos came in late on the second piece. The F above middle C stuck, and the substitute struck it again, surprised.</p>
+
+<p>Erin looked at the empty piano bench.</p>
+
+<p>For half a second, grief became ridiculous.</p>
+
+<p>Mrs.&nbsp;Ledwell was dead, and the key was still stuck.</p>
+
+<p>The thought made anger rise so fast Erin nearly choked on it. The world should have been altered down to its machinery. The gym lights should have failed. The piano should have split its wooden body open. Every clock in the county should have stopped at 8:04.</p>
+
+<p>Instead, the substitute lowered his hands.</p>
+
+<p>The audience clapped.</p>
+
+<p>Then he looked at Erin, because Mrs.&nbsp;Ledwell had left a program with Erin&rsquo;s name on it.</p>
+
+<p>Eleven steps to the microphone.</p>
+
+<p>Erin counted things.</p>
+
+<p>The microphone stood at the height Mrs.&nbsp;Ledwell had set it Tuesday of last week. No one had touched it since.</p>
+
+<p>Erin made herself not understand that.</p>
+
+<p>The track began.</p>
+
+<p>She came in under her breath, the way it asks.</p>
+
+<p>The first verse held.</p>
+
+<p>Her voice went out low and did not go pretty. It went out with the paint scraped off, and the gym grew still the way a field grows still before weather.</p>
+
+<p>The lines.</p>
+
+<p>The waiting.</p>
+
+<p>She sang what she knew, and it turned out she knew it.</p>
+
+<p>She knew how to sit without moving.</p>
+
+<p>She knew how to make a face into a door.</p>
+
+<p>She knew what happened when a room held power over you and called your silence good behavior.</p>
+
+<p>The sound rose into the dark overhead, and the void was bearable.</p>
+
+<p>She had practiced for the void.</p>
+
+<p>Then, coming up on the turn, Erin&rsquo;s eyes did what she had ordered them not to do.</p>
+
+<p>Fourth row.</p>
+
+<p>The boy&rsquo;s clip-on tie sat crooked against his throat. He was watching her with his mouth a little open, the way you watch weather.</p>
+
+<p>And all at once the song had somewhere to go.</p>
+
+<p>An address.</p>
+
+<p>It was his mother&rsquo;s song now.</p>
+
+<p>Everything in the gym was his mother&rsquo;s now&mdash;the piano, the stuck key, the legal pad, the ball cap, the handwriting, Erin&rsquo;s name penciled across the top of a page.</p>
+
+<p>Her voice was on its way to him and could not be called back.</p>
+
+<p>The last thing Mrs.&nbsp;Ledwell had given Erin was moving toward the person she had left.</p>
+
+<p>Erin tried to take a breath.</p>
+
+<p>Instead, her knees quit.</p>
+
+<p>Not a faint.</p>
+
+<p>Just the body&rsquo;s vote, cast without her.</p>
+
+<p>She went down on both knees, hard enough to hear, the microphone still in her fist.</p>
+
+<p>The gym held its breath.</p>
+
+<p>Pain flashed white through her legs.</p>
+
+<p>For one second she considered staying silent.</p>
+
+<p>Letting the track go on without her.</p>
+
+<p>Letting the whole county watch the song fail.</p>
+
+<p>Part of her wanted to punish them for coming. For filling the chairs. For calling Mrs.&nbsp;Ledwell brave so they would not have to call her gone.</p>
+
+<p>Then Erin saw the boy&rsquo;s feet swing once beneath the chair.</p>
+
+<p>He looked frightened.</p>
+
+<p>Not of her.</p>
+
+<p>For her.</p>
+
+<p>She sat back on her heels on the floor of a county that had never once asked to hear her.</p>
+
+<p>She lifted the microphone.</p>
+
+<p>And finished the song sitting down.</p>
+
+<p>Not louder.</p>
+
+<p>Not triumphant.</p>
+
+<p>She put her eyes on the boy&rsquo;s shoes because his shoes could hold what his face could not.</p>
+
+<p>The verse about the tables.</p>
+
+<p>The verse that starts over.</p>
+
+<p>Her voice cracked once, and she let it crack.</p>
+
+<p>Another breath came ragged.</p>
+
+<p>She let that stay too.</p>
+
+<p>There would be no clean version now. No performance untouched by what had happened. No way to give them only the shape and keep the rest.</p>
+
+<p>The grief moved through her voice without becoming beautiful.</p>
+
+<p>And part of Erin&mdash;she felt it happen mid-line&mdash;climbed into the bleachers of herself and began taking notes.</p>
+
+<p><em>The girl who went to her knees and finished anyway.</em></p>
+
+<p><em>The brave girl.</em></p>
+
+<p><em>The louder girl.</em></p>
+
+<p>She hated the teller.</p>
+
+<p>Hated how quickly pain learned to pose for its picture.</p>
+
+<p>But beneath that voice was another one, quieter and more difficult, saying:</p>
+
+<p><em>She chose you anyway.</em></p>
+
+<p>Erin nearly lost the next line.</p>
+
+<p>The last one went out under its own breath, the way it had come in.</p>
+
+<p>Then the gym came down on her like weather.</p>
+
+<p>Four hundred people rose.</p>
+
+<p>Erin sat with the microphone in her lap, twelve feet from a poster still promising to fund a fight that was over.</p>
+
+<p>She did not feel brave.</p>
+
+<p>She felt abandoned.</p>
+
+<p>She felt chosen.</p>
+
+<div class="beat" aria-hidden="true"><svg viewBox="0 0 120 28"><path d="M0 14 H44"/><path class="spike" d="M44 14 L52 14 L57 4 L63 22 L67 14 L76 14"/><path d="M76 14 H120"/></svg></div>
+
+<p>The house lights came up, and the gym went back to being a gym.</p>
+
+<p>The applause was twenty minutes gone, and the building had already forgotten it.</p>
+
+<p>Erin stayed because her mama was coming at nine-thirty and because her hands needed a job. She folded chairs beside a custodian who said nothing except which rack.</p>
+
+<p>Mrs.&nbsp;Ledwell&rsquo;s husband stood near the free-throw line, thanking the county two people at a time in a voice with nothing left in it but manners.</p>
+
+<p>The boy had taken off his shoes.</p>
+
+<p>Past whatever bedtime was now, he had worked the church shoes loose under his chair. While his father thanked the county, the boy took a running start in his sock feet and slid the length of the paint.</p>
+
+<p>He stood.</p>
+
+<p>Ran back.</p>
+
+<p>Slid again, arms out.</p>
+
+<p>Nobody stopped him.</p>
+
+<p>Nobody whose job that might have been, not anymore.</p>
+
+<p>Every grown person arrived at the same understanding&mdash;<em>not going to be the one</em>&mdash;and looked away and let him slide.</p>
+
+<p>Erin stood with a folded chair against her chest.</p>
+
+<p>Three seconds of a boy crossing the gym floor in his socks.</p>
+
+<p>For those three seconds he was not the dead woman&rsquo;s son. He was only a boy learning what the floor would let him do.</p>
+
+<p>He slid a third time and laughed.</p>
+
+<p>The sound struck Erin harder than crying would have.</p>
+
+<p>She had thought grief would erase everything around it. Swallow hunger, boredom, laughter, the need to move.</p>
+
+<p>Instead, it made room beside itself.</p>
+
+<p>That seemed crueler.</p>
+
+<p>That seemed like mercy.</p>
+
+<p>Then his father&rsquo;s hand found his collar, gentle, and steered him toward the doors. The church shoes hung from two fingers of the other hand.</p>
+
+<p>By the exit, the custodian took the poster off the easel.</p>
+
+<p>He hesitated.</p>
+
+<p>Then he turned it face-to-the-wall against the pads.</p>
+
+<p>Erin imagined the words still there in the dark.</p>
+
+<p class="poster blood poster-line">Fund Her Fight.</p>
+
+<p>A sentence could remain wrong after everyone knew better.</p>
+
+<p>In the Corolla, everything smelled the way it always smelled&mdash;the peppermint gum in the console, old french fries beneath the seat, the coconut lotion her mama used on her hands.</p>
+
+<p>Her mama looked at Erin&rsquo;s face.</p>
+
+<p>Then at her knees.</p>
+
+<p>She did not ask.</p>
+
+<p>She pulled out of the lot, and her hand moved toward the radio from habit.</p>
+
+<p>&ldquo;Leave it off,&rdquo; Erin said.</p>
+
+<p>Softly.</p>
+
+<p>It was the first thing she had said since the last line of the song.</p>
+
+<p>They rode out into the county with the window down two inches, the dark coming in cold off the fields.</p>
+
+<p>Erin&rsquo;s knees ached where the floor had caught them.</p>
+
+<p>She placed both palms over the bruises and felt the heat gathering beneath the skin.</p>
+
+<p>Her mama drove with both hands on the wheel.</p>
+
+<p>After a mile, Erin said, &ldquo;She wrote my name.&rdquo;</p>
+
+<p>Her mama glanced over, then back at the road.</p>
+
+<p>&ldquo;I know, baby.&rdquo;</p>
+
+<p>&ldquo;No,&rdquo; Erin said.</p>
+
+<p>Her throat tightened.</p>
+
+<p>She looked out the window at the unlit fields, the fence posts appearing and disappearing in the headlights.</p>
+
+<p>&ldquo;She wrote it before.&rdquo;</p>
+
+<p>Her mama did not ask before what.</p>
+
+<p>Maybe she understood.</p>
+
+<p>Maybe she did not.</p>
+
+<p>Erin pressed her palms harder against her knees.</p>
+
+<p>The tears came without drama. No sound at first. Just heat leaving her eyes and cooling along her jaw.</p>
+
+<p>She did not wipe them away.</p>
+
+<p>Her mama reached across the console and laid one hand open between them.</p>
+
+<p>Erin looked at it.</p>
+
+<p>For several seconds, she did nothing.</p>
+
+<p>Then she placed her graphite-marked thumb in her mother&rsquo;s palm.</p>
+
+<p>Somewhere far up in the dark of herself, the bleachers waited.</p>
+
+<p>Not empty.</p>
+
+<p>Not full.</p>
+
+<p>Holding the shape of whoever had been there.</p>
+
+<p>Outside, the county kept passing&mdash;church sign, water tower, field, field, field.</p>
+
+</article>
+
+<div class="endmark" aria-hidden="true">
+  <svg viewBox="0 0 180 28"><path d="M0 14 H98"/><path class="flick" d="M98 14 L106 14 L110 8 L114 17 L117 14 L126 14"/><path d="M126 14 H180"/></svg>
+  <p class="colophon">The Louder Girl &middot; Jack Stallings</p>
+</div>
+
+</div>
+</body>
+</html>
