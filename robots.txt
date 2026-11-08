@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /confess/
+
+Sitemap: https://jackstallings.com/sitemap.xml
