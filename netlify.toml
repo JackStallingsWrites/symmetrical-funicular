@@ -50,18 +50,13 @@
     Cache-Control = "public, max-age=604800"
 
 # ─── Named redirects ─────────────────────────────────────────────
-[[redirects]]
-  from   = "/theses"
-  to     = "https://knowjack.substack.com/p/95-theses?r=3895d8"
-  status = 301
-
+# /theses/ is the canonical home of the 95 Theses. Old aliases point there.
 [[redirects]]
   from   = "/95-theses"
-  to     = "https://knowjack.substack.com/p/95-theses?r=3895d8"
+  to     = "/theses/"
   status = 301
 
-# ─── SPA fallback (serves index.html for any unmatched path) ─────
-[[redirects]]
-  from   = "/*"
-  to     = "/index.html"
-  status = 200
+# No SPA fallback. This is a static site: an unknown path is a real 404,
+# served from /404.html (Netlify picks it up automatically). The old
+# catch-all returned 200 + the homepage for every dead link, which hid
+# broken links and let search engines index the homepage under any URL.
