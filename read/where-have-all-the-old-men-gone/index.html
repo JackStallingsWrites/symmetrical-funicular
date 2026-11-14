@@ -24,13 +24,13 @@
 
     /* ── Brand tokens ──────────────────────────────────────── */
     :root {
-      --ink:        #1C1C1C;
-      --bone:       #F5F0E8;
-      --bone-dim:   rgba(245, 240, 232, 0.62);
-      --bone-faint: rgba(245, 240, 232, 0.10);
-      --oxblood:    #7A1E1E;
+      --ink:        #0E0E10;
+      --bone:       #F2EEE8;
+      --bone-dim:   rgba(242, 238, 232, 0.62);
+      --bone-faint: rgba(242, 238, 232, 0.10);
+      --oxblood:    #4B0F14;
       --gold:       #C9952A;
-      --rule:       rgba(245, 240, 232, 0.12);
+      --rule:       rgba(242, 238, 232, 0.12);
       --serif:      'EB Garamond', 'Georgia', serif;
       --sans:       'Inter', system-ui, sans-serif;
     }
@@ -54,7 +54,7 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 1rem clamp(1.25rem, 5vw, 3rem);
-      background: rgba(28, 28, 28, 0.92);
+      background: rgba(14, 14, 16, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--bone-faint);
@@ -82,8 +82,8 @@
 
     /* ── Audio player ──────────────────────────────────────── */
     .audio-bar {
-      background: rgba(122, 30, 30, 0.12);
-      border: 1px solid rgba(122, 30, 30, 0.35);
+      background: rgba(75, 15, 20, 0.12);
+      border: 1px solid rgba(75, 15, 20, 0.35);
       border-radius: 2px;
       padding: 1.25rem 1.5rem;
       margin-bottom: 2.8rem;
@@ -118,7 +118,7 @@
       flex-shrink: 0;
       transition: background 0.2s, border-color 0.2s;
     }
-    .audio-play:hover { background: rgba(122,30,30,0.25); }
+    .audio-play:hover { background: rgba(75,15,20,0.25); }
     .audio-play svg { width: 14px; height: 14px; fill: var(--bone); }
 
     .audio-progress-wrap {

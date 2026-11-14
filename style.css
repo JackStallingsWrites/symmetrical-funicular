@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════
    TASTE & SEE JACK — jackstallings.com
    Brand Law:
-     Global Ink  #1C1C1C   Global Bone #F5F0E8   Oxblood #7A1E1E
+     Global Ink  #0E0E10   Global Bone #F2EEE8   Oxblood #4B0F14
      Read — Oxblood Dusk: Indigo #3D2B6B (Read)
      Terracotta  #C0613A + Sage Moss #6B7C5C            (Hear)
-     Midnight Sapphire #1A2A4A + Oxblood #7A1E1E       (Confess)
+     Midnight Sapphire #1A2A4A + Oxblood #4B0F14       (Confess)
    ═══════════════════════════════════════════════════════════════ */
 
 /* ── Reset ──────────────────────────────────────────────────── */
@@ -17,11 +17,11 @@
 /* ── Custom Properties ──────────────────────────────────────── */
 :root {
   /* Global palette */
-  --ink:        #1C1C1C;
-  --bone:       #F5F0E8;
-  --bone-dim:   rgba(245, 240, 232, 0.62);
-  --bone-faint: rgba(245, 240, 232, 0.10);
-  --bone-subtle:rgba(245, 240, 232, 0.04);
+  --ink:        #0E0E10;
+  --bone:       #F2EEE8;
+  --bone-dim:   rgba(242, 238, 232, 0.62);
+  --bone-faint: rgba(242, 238, 232, 0.10);
+  --bone-subtle:rgba(242, 238, 232, 0.04);
 
   /* Read — Oxblood Dusk */
   --indigo:      #3D2B6B;
@@ -33,9 +33,9 @@
 
   /* Confess — The Hearth */
   --sapphire:    #1A2A4A;
-  --oxblood:       #7A1E1E;
+  --oxblood:       #4B0F14;
   --oxblood-light: #A33A35;
-  --oxblood-glow:  rgba(122, 30, 30, 0.22);
+  --oxblood-glow:  rgba(75, 15, 20, 0.22);
 
   /* Typography */
   --serif: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
@@ -212,7 +212,7 @@ body {
 }
 
 .nav.scrolled {
-  background: rgba(28, 28, 28, 0.93);
+  background: rgba(14, 14, 16, 0.93);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--bone-faint);
@@ -296,7 +296,7 @@ body {
     radial-gradient(ellipse 75% 55% at 50% 38%,
       rgba(61, 43, 107, 0.18) 0%, transparent 68%),
     radial-gradient(ellipse 45% 35% at 15% 85%,
-      rgba(122, 30, 30, 0.05) 0%, transparent 55%),
+      rgba(75, 15, 20, 0.05) 0%, transparent 55%),
     radial-gradient(ellipse 30% 25% at 85% 70%,
       rgba(61, 43, 107, 0.07) 0%, transparent 50%);
   pointer-events: none;
@@ -455,11 +455,11 @@ body {
 body.mood-confessional { --ink: #100c0c; }
 body.mood-confessional .hero::before { filter: saturate(1.5) brightness(0.82); }
 body.mood-confessional .door::before { opacity: 0.5; }
-body.mood-confessional .door-inner { border-color: rgba(122, 30, 30, 0.28); }
+body.mood-confessional .door-inner { border-color: rgba(75, 15, 20, 0.28); }
 body.mood-confessional .doors-grid,
 body.mood-confessional .about,
 body.mood-confessional .feed,
-body.mood-confessional .studio { border-color: rgba(122, 30, 30, 0.22); }
+body.mood-confessional .studio { border-color: rgba(75, 15, 20, 0.22); }
 body.mood-confessional .studio { opacity: 1; }
 
 /* Room layout: Stack — one door at a time, full width */
@@ -530,12 +530,12 @@ body.studio-named .studio-item-desc { display: block; }
   margin-bottom: 0.25rem;
   border: 1px solid var(--oxblood);
   border-radius: var(--radius);
-  background: rgba(122, 30, 30, 0.04);
+  background: rgba(75, 15, 20, 0.04);
   text-decoration: none;
   transition: background 0.22s var(--ease), border-color 0.22s var(--ease);
 }
 .works-featured:hover {
-  background: rgba(122, 30, 30, 0.09);
+  background: rgba(75, 15, 20, 0.09);
 }
 
 .works-featured-meta {
@@ -671,7 +671,7 @@ body.studio-named .studio-item-desc { display: block; }
 }
 .door--read::before {
   background: linear-gradient(145deg,
-    rgba(61, 43, 107, 0.40) 0%, rgba(122, 30, 30, 0.12) 100%);
+    rgba(61, 43, 107, 0.40) 0%, rgba(75, 15, 20, 0.12) 100%);
 }
 .door--hear::before {
   background: linear-gradient(145deg,
@@ -679,7 +679,7 @@ body.studio-named .studio-item-desc { display: block; }
 }
 .door--confess::before {
   background: linear-gradient(145deg,
-    rgba(26, 42, 74, 0.50) 0%, rgba(122, 30, 30, 0.28) 100%);
+    rgba(26, 42, 74, 0.50) 0%, rgba(75, 15, 20, 0.28) 100%);
 }
 .door:hover::before { opacity: 1; }
 
@@ -726,7 +726,7 @@ body.studio-named .studio-item-desc { display: block; }
 }
 .door--read .door-inner:hover   .door-num { color: rgba(201,149,42,0.18); }
 .door--hear .door-inner:hover   .door-num { color: rgba(192,97,58,0.18); }
-.door--confess .door-inner:hover .door-num { color: rgba(122,30,30,0.22); }
+.door--confess .door-inner:hover .door-num { color: rgba(75,15,20,0.22); }
 
 .door-title {
   font-family: var(--serif);
@@ -868,7 +868,7 @@ body.studio-named .studio-item-desc { display: block; }
   background: linear-gradient(
     90deg,
     var(--bone-faint) 25%,
-    rgba(245,240,232,0.07) 50%,
+    rgba(242,238,232,0.07) 50%,
     var(--bone-faint) 75%
   );
   background-size: 200% 100%;
